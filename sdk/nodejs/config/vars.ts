@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 declare var exports: any;
-const __config = new pulumi.Config("avxmlin");
+const __config = new pulumi.Config("aviatrix");
 
 export declare const controllerIp: string | undefined;
 Object.defineProperty(exports, "controllerIp", {

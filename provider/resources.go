@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package avxmlin
+package aviatrix
 
 import (
 	"fmt"
@@ -21,9 +21,9 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/mlin-aviatrix/pulumi-avxmlin/provider/pkg/version"
+	"github.com/mlin-aviatrix/pulumi-aviatrix/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	//"github.com/terraform-providers/terraform-provider-avxmlin/avxmlin"
+	//"github.com/terraform-providers/terraform-provider-aviatrix/aviatrix"
 	"github.com/AviatrixSystems/terraform-provider-aviatrix/v2/aviatrix"
 )
 
@@ -31,9 +31,9 @@ import (
 const (
 	// This variable controls the default name of the package in the package
 	// registries for nodejs and python:
-	mainPkg = "avxmlin"
+	mainPkg = "aviatrix"
 	// modules:
-	mainMod = "index" // the avxmlin module
+	mainMod = "index" // the aviatrix module
 )
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
@@ -52,7 +52,7 @@ func Provider() tfbridge.ProviderInfo {
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:    p,
-		Name: "avxmlin",
+		Name: "aviatrix",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "",
@@ -71,14 +71,14 @@ func Provider() tfbridge.ProviderInfo {
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
 		PluginDownloadURL: "",
-		Description:       "A Pulumi package for creating and managing avxmlin cloud resources.",
+		Description:       "A Pulumi package for creating and managing aviatrix cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "avxmlin", "category/cloud"},
+		Keywords:   []string{"pulumi", "aviatrix", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/mlin-aviatrix/pulumi-avxmlin",
+		Repository: "https://github.com/mlin-aviatrix/pulumi-aviatrix",
 		// The GitHub Org for the provider - defaults to `terraform-providers`
 		GitHubOrg: "",
 		Config:    map[string]*tfbridge.SchemaInfo{

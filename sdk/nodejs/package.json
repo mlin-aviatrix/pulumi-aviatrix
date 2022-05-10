@@ -1,18 +1,18 @@
 {
-    "name": "@pulumi/avxmlin",
+    "name": "@pulumi/aviatrix",
     "version": "${VERSION}",
-    "description": "A Pulumi package for creating and managing avxmlin cloud resources.",
+    "description": "A Pulumi package for creating and managing aviatrix cloud resources.",
     "keywords": [
         "pulumi",
-        "avxmlin",
+        "aviatrix",
         "category/cloud"
     ],
     "homepage": "https://www.pulumi.com",
-    "repository": "https://github.com/mlin-aviatrix/pulumi-avxmlin",
+    "repository": "https://github.com/mlin-aviatrix/pulumi-aviatrix",
     "license": "Apache-2.0",
     "scripts": {
         "build": "tsc",
-        "install": "node scripts/install-pulumi-plugin.js resource avxmlin ${VERSION}"
+        "install": "node scripts/install-pulumi-plugin.js resource aviatrix ${VERSION}"
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.0.0"

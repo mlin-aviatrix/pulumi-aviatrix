@@ -20,7 +20,7 @@ export class Vpc extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'avxmlin:index/vpc:Vpc';
+    public static readonly __pulumiType = 'aviatrix:index/vpc:Vpc';
 
     /**
      * Returns true if the given object is an instance of Vpc.  This is designed to work even

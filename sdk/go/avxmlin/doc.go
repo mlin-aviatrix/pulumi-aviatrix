@@ -1,3 +1,3 @@
-// A Pulumi package for creating and managing avxmlin cloud resources.
+// A Pulumi package for creating and managing aviatrix cloud resources.
 //
-package avxmlin
+package aviatrix

@@ -26,24 +26,24 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "avxmlin:index/account:Account":
+            case "aviatrix:index/account:Account":
                 return new Account(name, <any>undefined, { urn })
-            case "avxmlin:index/vpc:Vpc":
+            case "aviatrix:index/vpc:Vpc":
                 return new Vpc(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("avxmlin", "index/account", _module)
-pulumi.runtime.registerResourceModule("avxmlin", "index/vpc", _module)
+pulumi.runtime.registerResourceModule("aviatrix", "index/account", _module)
+pulumi.runtime.registerResourceModule("aviatrix", "index/vpc", _module)
 
 import { Provider } from "./provider";
 
-pulumi.runtime.registerResourcePackage("avxmlin", {
+pulumi.runtime.registerResourcePackage("aviatrix", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
-        if (type !== "pulumi:providers:avxmlin") {
+        if (type !== "pulumi:providers:aviatrix") {
             throw new Error(`unknown provider type ${type}`);
         }
         return new Provider(name, <any>undefined, { urn });

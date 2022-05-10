@@ -18,11 +18,11 @@ package main
 
 import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	avxmlin "github.com/mlin-aviatrix/pulumi-avxmlin/provider"
-	"github.com/mlin-aviatrix/pulumi-avxmlin/provider/pkg/version"
+	aviatrix "github.com/mlin-aviatrix/pulumi-aviatrix/provider"
+	"github.com/mlin-aviatrix/pulumi-aviatrix/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("avxmlin", version.Version, avxmlin.Provider(), pulumiSchema)
+	tfbridge.Main("aviatrix", version.Version, aviatrix.Provider(), pulumiSchema)
 }

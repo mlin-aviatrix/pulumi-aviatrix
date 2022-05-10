@@ -1,4 +1,4 @@
-module github.com/mlin-aviatrix/pulumi-avxmlin/provider
+module github.com/mlin-aviatrix/pulumi-aviatrix/provider
 
 go 1.17
 

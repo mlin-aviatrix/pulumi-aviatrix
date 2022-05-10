@@ -1,3 +1,3 @@
-module github.com/mlin-aviatrix/pulumi-avxmlin/examples
+module github.com/mlin-aviatrix/pulumi-aviatrix/examples
 
 go 1.16
