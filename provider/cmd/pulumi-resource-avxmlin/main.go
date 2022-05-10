@@ -17,9 +17,9 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	aviatrix "github.com/mlin-aviatrix/pulumi-aviatrix/provider"
 	"github.com/mlin-aviatrix/pulumi-aviatrix/provider/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 
 func main() {
