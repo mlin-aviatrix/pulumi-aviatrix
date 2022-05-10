@@ -1,0 +1,1329 @@
+{
+    "name": "avxmlin",
+    "description": "A Pulumi package for creating and managing avxmlin cloud resources.",
+    "keywords": [
+        "pulumi",
+        "avxmlin",
+        "category/cloud"
+    ],
+    "homepage": "https://www.pulumi.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`avxmlin` Terraform Provider](https://github.com/terraform-providers/terraform-provider-avxmlin).",
+    "repository": "https://github.com/mlin-aviatrix/pulumi-avxmlin",
+    "publisher": "Pulumi",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "config": {
+        "variables": {
+            "controllerIp": {
+                "type": "string"
+            },
+            "password": {
+                "type": "string"
+            },
+            "pathToCaCertificate": {
+                "type": "string"
+            },
+            "skipVersionValidation": {
+                "type": "boolean"
+            },
+            "username": {
+                "type": "string"
+            },
+            "verifySslCertificate": {
+                "type": "boolean"
+            }
+        },
+        "defaults": [
+            "controllerIp",
+            "password",
+            "username"
+        ]
+    },
+    "types": {
+        "avxmlin:index/VpcPrivateSubnet:VpcPrivateSubnet": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cidr",
+                        "name",
+                        "subnetId"
+                    ]
+                }
+            }
+        },
+        "avxmlin:index/VpcPublicSubnet:VpcPublicSubnet": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cidr",
+                        "name",
+                        "subnetId"
+                    ]
+                }
+            }
+        },
+        "avxmlin:index/VpcSubnet:VpcSubnet": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subnetId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "subnetId"
+                    ]
+                }
+            }
+        }
+    },
+    "provider": {
+        "description": "The provider type for the avxmlin package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "controllerIp": {
+                "type": "string"
+            },
+            "password": {
+                "type": "string"
+            },
+            "pathToCaCertificate": {
+                "type": "string"
+            },
+            "skipVersionValidation": {
+                "type": "boolean"
+            },
+            "username": {
+                "type": "string"
+            },
+            "verifySslCertificate": {
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "controllerIp",
+            "password",
+            "username"
+        ],
+        "inputProperties": {
+            "controllerIp": {
+                "type": "string"
+            },
+            "password": {
+                "type": "string"
+            },
+            "pathToCaCertificate": {
+                "type": "string"
+            },
+            "skipVersionValidation": {
+                "type": "boolean"
+            },
+            "username": {
+                "type": "string"
+            },
+            "verifySslCertificate": {
+                "type": "boolean"
+            }
+        },
+        "requiredInputs": [
+            "controllerIp",
+            "password",
+            "username"
+        ]
+    },
+    "resources": {
+        "avxmlin:index/account:Account": {
+            "properties": {
+                "accountName": {
+                    "type": "string",
+                    "description": "Account name. This can be used for logging in to CloudN console or UserConnect controller.\n"
+                },
+                "alicloudAccessKey": {
+                    "type": "string",
+                    "description": "Alibaba Cloud Access Key.\n"
+                },
+                "alicloudAccountId": {
+                    "type": "string",
+                    "description": "Alibaba Cloud Account ID to associate with Aviatrix account.\n"
+                },
+                "alicloudSecretKey": {
+                    "type": "string",
+                    "description": "Alibaba Cloud Secret Key.\n"
+                },
+                "armApplicationId": {
+                    "type": "string",
+                    "description": "Azure Application ID.\n"
+                },
+                "armApplicationKey": {
+                    "type": "string",
+                    "description": "Azure Application Key.\n"
+                },
+                "armDirectoryId": {
+                    "type": "string",
+                    "description": "Azure Directory ID.\n"
+                },
+                "armSubscriptionId": {
+                    "type": "string",
+                    "description": "Azure Subscription ID.\n"
+                },
+                "auditAccount": {
+                    "type": "boolean",
+                    "description": "Enable account audit.\n"
+                },
+                "awsAccessKey": {
+                    "type": "string",
+                    "description": "AWS Access Key.\n"
+                },
+                "awsAccountNumber": {
+                    "type": "string",
+                    "description": "AWS Account number to associate with Aviatrix account. Should be 12 digits.\n"
+                },
+                "awsCaCertPath": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region or Secret Region Custom Certificate Authority file path on the controller.\n"
+                },
+                "awsGatewayRoleApp": {
+                    "type": "string",
+                    "description": "AWS App role ARN for gateways.\n"
+                },
+                "awsGatewayRoleEc2": {
+                    "type": "string",
+                    "description": "AWS EC2 role ARN for gateways.\n"
+                },
+                "awsIam": {
+                    "type": "boolean",
+                    "description": "AWS IAM-role based flag.\n"
+                },
+                "awsRoleApp": {
+                    "type": "string",
+                    "description": "AWS App role ARN.\n"
+                },
+                "awsRoleEc2": {
+                    "type": "string",
+                    "description": "AWS EC2 role ARN.\n"
+                },
+                "awsSecretKey": {
+                    "type": "string",
+                    "description": "AWS Secret Key.\n"
+                },
+                "awschinaAccessKey": {
+                    "type": "string",
+                    "description": "AWS China Access Key.\n"
+                },
+                "awschinaAccountNumber": {
+                    "type": "string",
+                    "description": "AWS China Account Number.\n"
+                },
+                "awschinaIam": {
+                    "type": "boolean",
+                    "description": "AWS China IAM-role based flag.\n"
+                },
+                "awschinaRoleApp": {
+                    "type": "string",
+                    "description": "AWS China App Role ARN.\n"
+                },
+                "awschinaRoleEc2": {
+                    "type": "string",
+                    "description": "AWS China EC2 Role ARN.\n"
+                },
+                "awschinaSecretKey": {
+                    "type": "string",
+                    "description": "AWS China Secret Key.\n"
+                },
+                "awsgovAccessKey": {
+                    "type": "string",
+                    "description": "AWS Gov Access Key.\n"
+                },
+                "awsgovAccountNumber": {
+                    "type": "string",
+                    "description": "AWS Gov Account number to associate with Aviatrix account.\n"
+                },
+                "awsgovIam": {
+                    "type": "boolean",
+                    "description": "AWSGov IAM-role based flag\n"
+                },
+                "awsgovRoleApp": {
+                    "type": "string",
+                    "description": "AWSGov App role ARN\n"
+                },
+                "awsgovRoleEc2": {
+                    "type": "string",
+                    "description": "AWSGov EC2 role ARN\n"
+                },
+                "awsgovSecretKey": {
+                    "type": "string",
+                    "description": "AWS Gov Secret Key.\n"
+                },
+                "awssAccountNumber": {
+                    "type": "string",
+                    "description": "AWS Secret Region Account Number.\n"
+                },
+                "awssCaChainCert": {
+                    "type": "string",
+                    "description": "AWS Secret Region Custom Certificate Authority file path.\n"
+                },
+                "awssCapAccountName": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Account Name.\n"
+                },
+                "awssCapAgency": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Agency.\n"
+                },
+                "awssCapCert": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Certificate file path.\n"
+                },
+                "awssCapCertKey": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Certificate Key file path.\n"
+                },
+                "awssCapCertKeyPath": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Certificate Key file path on the controller.\n"
+                },
+                "awssCapCertPath": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Certificate file path on the controller.\n"
+                },
+                "awssCapRoleName": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Role Name.\n"
+                },
+                "awssCapUrl": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Endpoint URL.\n"
+                },
+                "awstsAccountNumber": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region Account Number.\n"
+                },
+                "awstsCaChainCert": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region Custom Certificate Authority file path.\n"
+                },
+                "awstsCapAgency": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Agency.\n"
+                },
+                "awstsCapCert": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Certificate file path.\n"
+                },
+                "awstsCapCertKey": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Certificate Key file path.\n"
+                },
+                "awstsCapCertKeyPath": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Certificate Key file path on the controller.\n"
+                },
+                "awstsCapCertPath": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Certificate file path on the controller.\n"
+                },
+                "awstsCapMission": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Mission.\n"
+                },
+                "awstsCapRoleName": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Role Name.\n"
+                },
+                "awstsCapUrl": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Endpoint URL.\n"
+                },
+                "azurechinaApplicationId": {
+                    "type": "string",
+                    "description": "Azure China Application ID.\n"
+                },
+                "azurechinaApplicationKey": {
+                    "type": "string",
+                    "description": "Azure China Application Key.\n"
+                },
+                "azurechinaDirectoryId": {
+                    "type": "string",
+                    "description": "Azure China Directory ID.\n"
+                },
+                "azurechinaSubscriptionId": {
+                    "type": "string",
+                    "description": "Azure China Subscription ID.\n"
+                },
+                "azuregovApplicationId": {
+                    "type": "string",
+                    "description": "Azure Gov Application ID.\n"
+                },
+                "azuregovApplicationKey": {
+                    "type": "string",
+                    "description": "Azure Gov Application Key.\n"
+                },
+                "azuregovDirectoryId": {
+                    "type": "string",
+                    "description": "Azure Gov Directory ID.\n"
+                },
+                "azuregovSubscriptionId": {
+                    "type": "string",
+                    "description": "Azure Gov Subscription ID.\n"
+                },
+                "cloudType": {
+                    "type": "integer",
+                    "description": "Type of cloud service provider.\n"
+                },
+                "gcloudProjectCredentialsFilepath": {
+                    "type": "string",
+                    "description": "GCloud Project credentials local file path.\n"
+                },
+                "gcloudProjectId": {
+                    "type": "string",
+                    "description": "GCloud Project ID.\n"
+                },
+                "ociApiPrivateKeyFilepath": {
+                    "type": "string",
+                    "description": "OCI API Private Key local file path.\n"
+                },
+                "ociCompartmentId": {
+                    "type": "string",
+                    "description": "OCI Compartment OCID.\n"
+                },
+                "ociTenancyId": {
+                    "type": "string",
+                    "description": "OCI Tenancy OCID.\n"
+                },
+                "ociUserId": {
+                    "type": "string",
+                    "description": "OCI User OCID.\n"
+                }
+            },
+            "required": [
+                "accountName",
+                "awsCaCertPath",
+                "awsRoleApp",
+                "awsRoleEc2",
+                "awschinaRoleApp",
+                "awschinaRoleEc2",
+                "awsgovRoleApp",
+                "awsgovRoleEc2",
+                "awssCapCertKeyPath",
+                "awssCapCertPath",
+                "awstsCapCertKeyPath",
+                "awstsCapCertPath",
+                "cloudType"
+            ],
+            "inputProperties": {
+                "accountName": {
+                    "type": "string",
+                    "description": "Account name. This can be used for logging in to CloudN console or UserConnect controller.\n"
+                },
+                "alicloudAccessKey": {
+                    "type": "string",
+                    "description": "Alibaba Cloud Access Key.\n"
+                },
+                "alicloudAccountId": {
+                    "type": "string",
+                    "description": "Alibaba Cloud Account ID to associate with Aviatrix account.\n"
+                },
+                "alicloudSecretKey": {
+                    "type": "string",
+                    "description": "Alibaba Cloud Secret Key.\n"
+                },
+                "armApplicationId": {
+                    "type": "string",
+                    "description": "Azure Application ID.\n"
+                },
+                "armApplicationKey": {
+                    "type": "string",
+                    "description": "Azure Application Key.\n"
+                },
+                "armDirectoryId": {
+                    "type": "string",
+                    "description": "Azure Directory ID.\n"
+                },
+                "armSubscriptionId": {
+                    "type": "string",
+                    "description": "Azure Subscription ID.\n"
+                },
+                "auditAccount": {
+                    "type": "boolean",
+                    "description": "Enable account audit.\n"
+                },
+                "awsAccessKey": {
+                    "type": "string",
+                    "description": "AWS Access Key.\n"
+                },
+                "awsAccountNumber": {
+                    "type": "string",
+                    "description": "AWS Account number to associate with Aviatrix account. Should be 12 digits.\n"
+                },
+                "awsGatewayRoleApp": {
+                    "type": "string",
+                    "description": "AWS App role ARN for gateways.\n"
+                },
+                "awsGatewayRoleEc2": {
+                    "type": "string",
+                    "description": "AWS EC2 role ARN for gateways.\n"
+                },
+                "awsIam": {
+                    "type": "boolean",
+                    "description": "AWS IAM-role based flag.\n"
+                },
+                "awsRoleApp": {
+                    "type": "string",
+                    "description": "AWS App role ARN.\n"
+                },
+                "awsRoleEc2": {
+                    "type": "string",
+                    "description": "AWS EC2 role ARN.\n"
+                },
+                "awsSecretKey": {
+                    "type": "string",
+                    "description": "AWS Secret Key.\n"
+                },
+                "awschinaAccessKey": {
+                    "type": "string",
+                    "description": "AWS China Access Key.\n"
+                },
+                "awschinaAccountNumber": {
+                    "type": "string",
+                    "description": "AWS China Account Number.\n"
+                },
+                "awschinaIam": {
+                    "type": "boolean",
+                    "description": "AWS China IAM-role based flag.\n"
+                },
+                "awschinaRoleApp": {
+                    "type": "string",
+                    "description": "AWS China App Role ARN.\n"
+                },
+                "awschinaRoleEc2": {
+                    "type": "string",
+                    "description": "AWS China EC2 Role ARN.\n"
+                },
+                "awschinaSecretKey": {
+                    "type": "string",
+                    "description": "AWS China Secret Key.\n"
+                },
+                "awsgovAccessKey": {
+                    "type": "string",
+                    "description": "AWS Gov Access Key.\n"
+                },
+                "awsgovAccountNumber": {
+                    "type": "string",
+                    "description": "AWS Gov Account number to associate with Aviatrix account.\n"
+                },
+                "awsgovIam": {
+                    "type": "boolean",
+                    "description": "AWSGov IAM-role based flag\n"
+                },
+                "awsgovRoleApp": {
+                    "type": "string",
+                    "description": "AWSGov App role ARN\n"
+                },
+                "awsgovRoleEc2": {
+                    "type": "string",
+                    "description": "AWSGov EC2 role ARN\n"
+                },
+                "awsgovSecretKey": {
+                    "type": "string",
+                    "description": "AWS Gov Secret Key.\n"
+                },
+                "awssAccountNumber": {
+                    "type": "string",
+                    "description": "AWS Secret Region Account Number.\n"
+                },
+                "awssCaChainCert": {
+                    "type": "string",
+                    "description": "AWS Secret Region Custom Certificate Authority file path.\n"
+                },
+                "awssCapAccountName": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Account Name.\n"
+                },
+                "awssCapAgency": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Agency.\n"
+                },
+                "awssCapCert": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Certificate file path.\n"
+                },
+                "awssCapCertKey": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Certificate Key file path.\n"
+                },
+                "awssCapRoleName": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Role Name.\n"
+                },
+                "awssCapUrl": {
+                    "type": "string",
+                    "description": "AWS Secret Region CAP Endpoint URL.\n"
+                },
+                "awstsAccountNumber": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region Account Number.\n"
+                },
+                "awstsCaChainCert": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region Custom Certificate Authority file path.\n"
+                },
+                "awstsCapAgency": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Agency.\n"
+                },
+                "awstsCapCert": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Certificate file path.\n"
+                },
+                "awstsCapCertKey": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Certificate Key file path.\n"
+                },
+                "awstsCapMission": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Mission.\n"
+                },
+                "awstsCapRoleName": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Role Name.\n"
+                },
+                "awstsCapUrl": {
+                    "type": "string",
+                    "description": "AWS Top Secret Region CAP Endpoint URL.\n"
+                },
+                "azurechinaApplicationId": {
+                    "type": "string",
+                    "description": "Azure China Application ID.\n"
+                },
+                "azurechinaApplicationKey": {
+                    "type": "string",
+                    "description": "Azure China Application Key.\n"
+                },
+                "azurechinaDirectoryId": {
+                    "type": "string",
+                    "description": "Azure China Directory ID.\n"
+                },
+                "azurechinaSubscriptionId": {
+                    "type": "string",
+                    "description": "Azure China Subscription ID.\n"
+                },
+                "azuregovApplicationId": {
+                    "type": "string",
+                    "description": "Azure Gov Application ID.\n"
+                },
+                "azuregovApplicationKey": {
+                    "type": "string",
+                    "description": "Azure Gov Application Key.\n"
+                },
+                "azuregovDirectoryId": {
+                    "type": "string",
+                    "description": "Azure Gov Directory ID.\n"
+                },
+                "azuregovSubscriptionId": {
+                    "type": "string",
+                    "description": "Azure Gov Subscription ID.\n"
+                },
+                "cloudType": {
+                    "type": "integer",
+                    "description": "Type of cloud service provider.\n"
+                },
+                "gcloudProjectCredentialsFilepath": {
+                    "type": "string",
+                    "description": "GCloud Project credentials local file path.\n"
+                },
+                "gcloudProjectId": {
+                    "type": "string",
+                    "description": "GCloud Project ID.\n"
+                },
+                "ociApiPrivateKeyFilepath": {
+                    "type": "string",
+                    "description": "OCI API Private Key local file path.\n"
+                },
+                "ociCompartmentId": {
+                    "type": "string",
+                    "description": "OCI Compartment OCID.\n"
+                },
+                "ociTenancyId": {
+                    "type": "string",
+                    "description": "OCI Tenancy OCID.\n"
+                },
+                "ociUserId": {
+                    "type": "string",
+                    "description": "OCI User OCID.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountName",
+                "cloudType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Account resources.\n",
+                "properties": {
+                    "accountName": {
+                        "type": "string",
+                        "description": "Account name. This can be used for logging in to CloudN console or UserConnect controller.\n"
+                    },
+                    "alicloudAccessKey": {
+                        "type": "string",
+                        "description": "Alibaba Cloud Access Key.\n"
+                    },
+                    "alicloudAccountId": {
+                        "type": "string",
+                        "description": "Alibaba Cloud Account ID to associate with Aviatrix account.\n"
+                    },
+                    "alicloudSecretKey": {
+                        "type": "string",
+                        "description": "Alibaba Cloud Secret Key.\n"
+                    },
+                    "armApplicationId": {
+                        "type": "string",
+                        "description": "Azure Application ID.\n"
+                    },
+                    "armApplicationKey": {
+                        "type": "string",
+                        "description": "Azure Application Key.\n"
+                    },
+                    "armDirectoryId": {
+                        "type": "string",
+                        "description": "Azure Directory ID.\n"
+                    },
+                    "armSubscriptionId": {
+                        "type": "string",
+                        "description": "Azure Subscription ID.\n"
+                    },
+                    "auditAccount": {
+                        "type": "boolean",
+                        "description": "Enable account audit.\n"
+                    },
+                    "awsAccessKey": {
+                        "type": "string",
+                        "description": "AWS Access Key.\n"
+                    },
+                    "awsAccountNumber": {
+                        "type": "string",
+                        "description": "AWS Account number to associate with Aviatrix account. Should be 12 digits.\n"
+                    },
+                    "awsCaCertPath": {
+                        "type": "string",
+                        "description": "AWS Top Secret Region or Secret Region Custom Certificate Authority file path on the controller.\n"
+                    },
+                    "awsGatewayRoleApp": {
+                        "type": "string",
+                        "description": "AWS App role ARN for gateways.\n"
+                    },
+                    "awsGatewayRoleEc2": {
+                        "type": "string",
+                        "description": "AWS EC2 role ARN for gateways.\n"
+                    },
+                    "awsIam": {
+                        "type": "boolean",
+                        "description": "AWS IAM-role based flag.\n"
+                    },
+                    "awsRoleApp": {
+                        "type": "string",
+                        "description": "AWS App role ARN.\n"
+                    },
+                    "awsRoleEc2": {
+                        "type": "string",
+                        "description": "AWS EC2 role ARN.\n"
+                    },
+                    "awsSecretKey": {
+                        "type": "string",
+                        "description": "AWS Secret Key.\n"
+                    },
+                    "awschinaAccessKey": {
+                        "type": "string",
+                        "description": "AWS China Access Key.\n"
+                    },
+                    "awschinaAccountNumber": {
+                        "type": "string",
+                        "description": "AWS China Account Number.\n"
+                    },
+                    "awschinaIam": {
+                        "type": "boolean",
+                        "description": "AWS China IAM-role based flag.\n"
+                    },
+                    "awschinaRoleApp": {
+                        "type": "string",
+                        "description": "AWS China App Role ARN.\n"
+                    },
+                    "awschinaRoleEc2": {
+                        "type": "string",
+                        "description": "AWS China EC2 Role ARN.\n"
+                    },
+                    "awschinaSecretKey": {
+                        "type": "string",
+                        "description": "AWS China Secret Key.\n"
+                    },
+                    "awsgovAccessKey": {
+                        "type": "string",
+                        "description": "AWS Gov Access Key.\n"
+                    },
+                    "awsgovAccountNumber": {
+                        "type": "string",
+                        "description": "AWS Gov Account number to associate with Aviatrix account.\n"
+                    },
+                    "awsgovIam": {
+                        "type": "boolean",
+                        "description": "AWSGov IAM-role based flag\n"
+                    },
+                    "awsgovRoleApp": {
+                        "type": "string",
+                        "description": "AWSGov App role ARN\n"
+                    },
+                    "awsgovRoleEc2": {
+                        "type": "string",
+                        "description": "AWSGov EC2 role ARN\n"
+                    },
+                    "awsgovSecretKey": {
+                        "type": "string",
+                        "description": "AWS Gov Secret Key.\n"
+                    },
+                    "awssAccountNumber": {
+                        "type": "string",
+                        "description": "AWS Secret Region Account Number.\n"
+                    },
+                    "awssCaChainCert": {
+                        "type": "string",
+                        "description": "AWS Secret Region Custom Certificate Authority file path.\n"
+                    },
+                    "awssCapAccountName": {
+                        "type": "string",
+                        "description": "AWS Secret Region CAP Account Name.\n"
+                    },
+                    "awssCapAgency": {
+                        "type": "string",
+                        "description": "AWS Secret Region CAP Agency.\n"
+                    },
+                    "awssCapCert": {
+                        "type": "string",
+                        "description": "AWS Secret Region CAP Certificate file path.\n"
+                    },
+                    "awssCapCertKey": {
+                        "type": "string",
+                        "description": "AWS Secret Region CAP Certificate Key file path.\n"
+                    },
+                    "awssCapCertKeyPath": {
+                        "type": "string",
+                        "description": "AWS Secret Region CAP Certificate Key file path on the controller.\n"
+                    },
+                    "awssCapCertPath": {
+                        "type": "string",
+                        "description": "AWS Secret Region CAP Certificate file path on the controller.\n"
+                    },
+                    "awssCapRoleName": {
+                        "type": "string",
+                        "description": "AWS Secret Region CAP Role Name.\n"
+                    },
+                    "awssCapUrl": {
+                        "type": "string",
+                        "description": "AWS Secret Region CAP Endpoint URL.\n"
+                    },
+                    "awstsAccountNumber": {
+                        "type": "string",
+                        "description": "AWS Top Secret Region Account Number.\n"
+                    },
+                    "awstsCaChainCert": {
+                        "type": "string",
+                        "description": "AWS Top Secret Region Custom Certificate Authority file path.\n"
+                    },
+                    "awstsCapAgency": {
+                        "type": "string",
+                        "description": "AWS Top Secret Region CAP Agency.\n"
+                    },
+                    "awstsCapCert": {
+                        "type": "string",
+                        "description": "AWS Top Secret Region CAP Certificate file path.\n"
+                    },
+                    "awstsCapCertKey": {
+                        "type": "string",
+                        "description": "AWS Top Secret Region CAP Certificate Key file path.\n"
+                    },
+                    "awstsCapCertKeyPath": {
+                        "type": "string",
+                        "description": "AWS Top Secret Region CAP Certificate Key file path on the controller.\n"
+                    },
+                    "awstsCapCertPath": {
+                        "type": "string",
+                        "description": "AWS Top Secret Region CAP Certificate file path on the controller.\n"
+                    },
+                    "awstsCapMission": {
+                        "type": "string",
+                        "description": "AWS Top Secret Region CAP Mission.\n"
+                    },
+                    "awstsCapRoleName": {
+                        "type": "string",
+                        "description": "AWS Top Secret Region CAP Role Name.\n"
+                    },
+                    "awstsCapUrl": {
+                        "type": "string",
+                        "description": "AWS Top Secret Region CAP Endpoint URL.\n"
+                    },
+                    "azurechinaApplicationId": {
+                        "type": "string",
+                        "description": "Azure China Application ID.\n"
+                    },
+                    "azurechinaApplicationKey": {
+                        "type": "string",
+                        "description": "Azure China Application Key.\n"
+                    },
+                    "azurechinaDirectoryId": {
+                        "type": "string",
+                        "description": "Azure China Directory ID.\n"
+                    },
+                    "azurechinaSubscriptionId": {
+                        "type": "string",
+                        "description": "Azure China Subscription ID.\n"
+                    },
+                    "azuregovApplicationId": {
+                        "type": "string",
+                        "description": "Azure Gov Application ID.\n"
+                    },
+                    "azuregovApplicationKey": {
+                        "type": "string",
+                        "description": "Azure Gov Application Key.\n"
+                    },
+                    "azuregovDirectoryId": {
+                        "type": "string",
+                        "description": "Azure Gov Directory ID.\n"
+                    },
+                    "azuregovSubscriptionId": {
+                        "type": "string",
+                        "description": "Azure Gov Subscription ID.\n"
+                    },
+                    "cloudType": {
+                        "type": "integer",
+                        "description": "Type of cloud service provider.\n"
+                    },
+                    "gcloudProjectCredentialsFilepath": {
+                        "type": "string",
+                        "description": "GCloud Project credentials local file path.\n"
+                    },
+                    "gcloudProjectId": {
+                        "type": "string",
+                        "description": "GCloud Project ID.\n"
+                    },
+                    "ociApiPrivateKeyFilepath": {
+                        "type": "string",
+                        "description": "OCI API Private Key local file path.\n"
+                    },
+                    "ociCompartmentId": {
+                        "type": "string",
+                        "description": "OCI Compartment OCID.\n"
+                    },
+                    "ociTenancyId": {
+                        "type": "string",
+                        "description": "OCI Tenancy OCID.\n"
+                    },
+                    "ociUserId": {
+                        "type": "string",
+                        "description": "OCI User OCID.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "avxmlin:index/vpc:Vpc": {
+            "properties": {
+                "accountName": {
+                    "type": "string",
+                    "description": "Account name. This account will be used to create an Aviatrix VPC.\n"
+                },
+                "availabilityDomains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of OCI availability domains.\n"
+                },
+                "aviatrixFirenetVpc": {
+                    "type": "boolean",
+                    "description": "Specify the VPC as Aviatrix FireNet VPC or not. Required to be false for GCP provider.\n"
+                },
+                "aviatrixTransitVpc": {
+                    "type": "boolean",
+                    "description": "Specify the VPC as Aviatrix Transit VPC or not. Required to be false for GCP provider.\n"
+                },
+                "azureVnetResourceId": {
+                    "type": "string",
+                    "description": "Azure vnet resource ID.\n"
+                },
+                "cidr": {
+                    "type": "string",
+                    "description": "Subnet of the VPC to be created. Required to be empty for GCP provider, and non-empty for other providers.\n"
+                },
+                "cloudType": {
+                    "type": "integer",
+                    "description": "Type of cloud service provider.\n"
+                },
+                "enableNativeGwlb": {
+                    "type": "boolean",
+                    "description": "Enable Native AWS GWLB for FireNet Function. Only valid with cloud_type = 1 (AWS). Valid values: true or false. Default\nvalue: false. Available as of provider version R2.18+.\n"
+                },
+                "enablePrivateOobSubnet": {
+                    "type": "boolean",
+                    "description": "Switch to enable private oob subnet. Only supported for AWS/AWSGov provider. Valid values: true, false. Default value:\nfalse.\n"
+                },
+                "faultDomains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of OCI fault domains.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the VPC to be created.\n"
+                },
+                "numOfSubnetPairs": {
+                    "type": "integer",
+                    "description": "Number of public subnet and private subnet pair to be created.\n"
+                },
+                "privateSubnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/avxmlin:index/VpcPrivateSubnet:VpcPrivateSubnet"
+                    },
+                    "description": "List of private subnet of the VPC to be created.\n"
+                },
+                "publicSubnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/avxmlin:index/VpcPublicSubnet:VpcPublicSubnet"
+                    },
+                    "description": "List of public subnet of the VPC to be created.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of cloud provider. Required to be empty for GCP provider, and non-empty for other providers.\n"
+                },
+                "resourceGroup": {
+                    "type": "string",
+                    "description": "Resource group of the Azure VPC created.\n"
+                },
+                "routeTables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of route table ids associated with this VPC.\n"
+                },
+                "subnetSize": {
+                    "type": "integer",
+                    "description": "Subnet size.\n"
+                },
+                "subnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/avxmlin:index/VpcSubnet:VpcSubnet"
+                    },
+                    "description": "List of subnet of the VPC to be created. Required to be non-empty for GCP provider, and empty for other providers.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "ID of the VPC created.\n"
+                }
+            },
+            "required": [
+                "accountName",
+                "availabilityDomains",
+                "azureVnetResourceId",
+                "cloudType",
+                "faultDomains",
+                "name",
+                "privateSubnets",
+                "publicSubnets",
+                "resourceGroup",
+                "routeTables",
+                "subnets",
+                "vpcId"
+            ],
+            "inputProperties": {
+                "accountName": {
+                    "type": "string",
+                    "description": "Account name. This account will be used to create an Aviatrix VPC.\n"
+                },
+                "aviatrixFirenetVpc": {
+                    "type": "boolean",
+                    "description": "Specify the VPC as Aviatrix FireNet VPC or not. Required to be false for GCP provider.\n"
+                },
+                "aviatrixTransitVpc": {
+                    "type": "boolean",
+                    "description": "Specify the VPC as Aviatrix Transit VPC or not. Required to be false for GCP provider.\n"
+                },
+                "cidr": {
+                    "type": "string",
+                    "description": "Subnet of the VPC to be created. Required to be empty for GCP provider, and non-empty for other providers.\n"
+                },
+                "cloudType": {
+                    "type": "integer",
+                    "description": "Type of cloud service provider.\n"
+                },
+                "enableNativeGwlb": {
+                    "type": "boolean",
+                    "description": "Enable Native AWS GWLB for FireNet Function. Only valid with cloud_type = 1 (AWS). Valid values: true or false. Default\nvalue: false. Available as of provider version R2.18+.\n"
+                },
+                "enablePrivateOobSubnet": {
+                    "type": "boolean",
+                    "description": "Switch to enable private oob subnet. Only supported for AWS/AWSGov provider. Valid values: true, false. Default value:\nfalse.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the VPC to be created.\n"
+                },
+                "numOfSubnetPairs": {
+                    "type": "integer",
+                    "description": "Number of public subnet and private subnet pair to be created.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of cloud provider. Required to be empty for GCP provider, and non-empty for other providers.\n"
+                },
+                "resourceGroup": {
+                    "type": "string",
+                    "description": "Resource group of the Azure VPC created.\n"
+                },
+                "subnetSize": {
+                    "type": "integer",
+                    "description": "Subnet size.\n"
+                },
+                "subnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/avxmlin:index/VpcSubnet:VpcSubnet"
+                    },
+                    "description": "List of subnet of the VPC to be created. Required to be non-empty for GCP provider, and empty for other providers.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountName",
+                "cloudType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Vpc resources.\n",
+                "properties": {
+                    "accountName": {
+                        "type": "string",
+                        "description": "Account name. This account will be used to create an Aviatrix VPC.\n"
+                    },
+                    "availabilityDomains": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of OCI availability domains.\n"
+                    },
+                    "aviatrixFirenetVpc": {
+                        "type": "boolean",
+                        "description": "Specify the VPC as Aviatrix FireNet VPC or not. Required to be false for GCP provider.\n"
+                    },
+                    "aviatrixTransitVpc": {
+                        "type": "boolean",
+                        "description": "Specify the VPC as Aviatrix Transit VPC or not. Required to be false for GCP provider.\n"
+                    },
+                    "azureVnetResourceId": {
+                        "type": "string",
+                        "description": "Azure vnet resource ID.\n"
+                    },
+                    "cidr": {
+                        "type": "string",
+                        "description": "Subnet of the VPC to be created. Required to be empty for GCP provider, and non-empty for other providers.\n"
+                    },
+                    "cloudType": {
+                        "type": "integer",
+                        "description": "Type of cloud service provider.\n"
+                    },
+                    "enableNativeGwlb": {
+                        "type": "boolean",
+                        "description": "Enable Native AWS GWLB for FireNet Function. Only valid with cloud_type = 1 (AWS). Valid values: true or false. Default\nvalue: false. Available as of provider version R2.18+.\n"
+                    },
+                    "enablePrivateOobSubnet": {
+                        "type": "boolean",
+                        "description": "Switch to enable private oob subnet. Only supported for AWS/AWSGov provider. Valid values: true, false. Default value:\nfalse.\n"
+                    },
+                    "faultDomains": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of OCI fault domains.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the VPC to be created.\n"
+                    },
+                    "numOfSubnetPairs": {
+                        "type": "integer",
+                        "description": "Number of public subnet and private subnet pair to be created.\n"
+                    },
+                    "privateSubnets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/avxmlin:index/VpcPrivateSubnet:VpcPrivateSubnet"
+                        },
+                        "description": "List of private subnet of the VPC to be created.\n"
+                    },
+                    "publicSubnets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/avxmlin:index/VpcPublicSubnet:VpcPublicSubnet"
+                        },
+                        "description": "List of public subnet of the VPC to be created.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region of cloud provider. Required to be empty for GCP provider, and non-empty for other providers.\n"
+                    },
+                    "resourceGroup": {
+                        "type": "string",
+                        "description": "Resource group of the Azure VPC created.\n"
+                    },
+                    "routeTables": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of route table ids associated with this VPC.\n"
+                    },
+                    "subnetSize": {
+                        "type": "integer",
+                        "description": "Subnet size.\n"
+                    },
+                    "subnets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/avxmlin:index/VpcSubnet:VpcSubnet"
+                        },
+                        "description": "List of subnet of the VPC to be created. Required to be non-empty for GCP provider, and empty for other providers.\n"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "ID of the VPC created.\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-avxmlin/sdk/go/avxmlin"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing avxmlin cloud resources.",
+            "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-avxmlin)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-avxmlin` repo](https://github.com/pulumi/pulumi-avxmlin/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-avxmlin` repo](https://github.com/terraform-providers/terraform-provider-avxmlin/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-avxmlin)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-avxmlin` repo](https://github.com/pulumi/pulumi-avxmlin/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-avxmlin` repo](https://github.com/terraform-providers/terraform-provider-avxmlin/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    }
+}
