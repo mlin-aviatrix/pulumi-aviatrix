@@ -40,6 +40,9 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if isZero(args.SkipVersionValidation) {
+		args.SkipVersionValidation = pulumi.BoolPtr(true)
+	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:aviatrix", name, args, &resource, opts...)
 	if err != nil {

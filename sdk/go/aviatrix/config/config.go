@@ -18,7 +18,11 @@ func GetPathToCaCertificate(ctx *pulumi.Context) string {
 	return config.Get(ctx, "aviatrix:pathToCaCertificate")
 }
 func GetSkipVersionValidation(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "aviatrix:skipVersionValidation")
+	v, err := config.TryBool(ctx, "aviatrix:skipVersionValidation")
+	if err == nil {
+		return v
+	}
+	return true
 }
 func GetUsername(ctx *pulumi.Context) string {
 	return config.Get(ctx, "aviatrix:username")

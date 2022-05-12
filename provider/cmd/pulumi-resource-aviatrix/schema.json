@@ -26,7 +26,8 @@
                 "type": "string"
             },
             "skipVersionValidation": {
-                "type": "boolean"
+                "type": "boolean",
+                "default": true
             },
             "username": {
                 "type": "string"
@@ -201,7 +202,8 @@
                 "type": "string"
             },
             "skipVersionValidation": {
-                "type": "boolean"
+                "type": "boolean",
+                "default": true
             },
             "username": {
                 "type": "string"
@@ -1003,6 +1005,1113 @@
                     "ociUserId": {
                         "type": "string",
                         "description": "OCI User OCID.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aviatrix:index/gateway:Gateway": {
+            "properties": {
+                "accountName": {
+                    "type": "string",
+                    "description": "Account name. This account will be used to launch Aviatrix gateway.\n"
+                },
+                "additionalCidrs": {
+                    "type": "string",
+                    "description": "A list of destination CIDR ranges that will also go through the VPN tunnel when Split Tunnel Mode is enabled.\n"
+                },
+                "additionalCidrsDesignatedGateway": {
+                    "type": "string",
+                    "description": "A list of CIDR ranges separated by comma to configure when 'designated_gateway' feature is enabled.\n"
+                },
+                "allocateNewEip": {
+                    "type": "boolean",
+                    "description": "When value is false, reuse an idle address in Elastic IP pool for this gateway. Otherwise, allocate a new Elastic IP and\nuse it for this gateway.\n"
+                },
+                "availabilityDomain": {
+                    "type": "string",
+                    "description": "Availability domain for OCI.\n"
+                },
+                "azureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to this Gateway.\n"
+                },
+                "cloudInstanceId": {
+                    "type": "string",
+                    "description": "Instance ID of the gateway.\n"
+                },
+                "cloudType": {
+                    "type": "integer",
+                    "description": "Type of cloud service provider.\n"
+                },
+                "customerManagedKeys": {
+                    "type": "string",
+                    "description": "Customer managed key ID.\n"
+                },
+                "duoApiHostname": {
+                    "type": "string",
+                    "description": "API hostname for DUO auth mode.\n"
+                },
+                "duoIntegrationKey": {
+                    "type": "string",
+                    "description": "Integration key for DUO auth mode.\n"
+                },
+                "duoPushMode": {
+                    "type": "string",
+                    "description": "Push mode for DUO auth.\n"
+                },
+                "duoSecretKey": {
+                    "type": "string",
+                    "description": "Secret key for DUO auth mode.\n"
+                },
+                "eip": {
+                    "type": "string",
+                    "description": "Required when allocate_new_eip is false. It uses specified EIP for this gateway.\n"
+                },
+                "elbDnsName": {
+                    "type": "string",
+                    "description": "ELB DNS Name.\n"
+                },
+                "elbName": {
+                    "type": "string",
+                    "description": "A name for the ELB that is created.\n"
+                },
+                "enableDesignatedGateway": {
+                    "type": "boolean",
+                    "description": "Enable 'designated_gateway' feature for Gateway. Valid values: true, false.\n"
+                },
+                "enableElb": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable ELB or not.\n"
+                },
+                "enableEncryptVolume": {
+                    "type": "boolean",
+                    "description": "Enable encrypt gateway EBS volume. Only supported for AWS provider. Valid values: true, false. Default value: false.\n"
+                },
+                "enableJumboFrame": {
+                    "type": "boolean",
+                    "description": "Enable jumbo frame support for Gateway. Valid values: true or false. Default value: true.\n"
+                },
+                "enableLdap": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable LDAP or not. Supported values: 'yes' and 'no'.\n"
+                },
+                "enableMonitorGatewaySubnets": {
+                    "type": "boolean",
+                    "description": "Enable monitor gateway subnets. Valid values: true, false. Default value: false.\n"
+                },
+                "enablePublicSubnetFiltering": {
+                    "type": "boolean",
+                    "description": "Create a [Public Subnet Filtering gateway](https://docs.aviatrix.com/HowTos/public_subnet_filtering_faq.html).\n"
+                },
+                "enableSpotInstance": {
+                    "type": "boolean",
+                    "description": "Enable spot instance. NOT supported for production deployment.\n"
+                },
+                "enableVpcDnsServer": {
+                    "type": "boolean",
+                    "description": "Enable vpc_dns_server for Gateway. Valid values: true, false.\n"
+                },
+                "enableVpnNat": {
+                    "type": "boolean",
+                    "description": "This field indicates whether to enable VPN NAT or not. Only supported for VPN gateway. Valid values: true, false.\nDefault value: true.\n"
+                },
+                "faultDomain": {
+                    "type": "string",
+                    "description": "Fault domain for OCI.\n"
+                },
+                "fqdnLanCidr": {
+                    "type": "string",
+                    "description": "FQDN gateway lan interface cidr.\n"
+                },
+                "fqdnLanInterface": {
+                    "type": "string",
+                    "description": "FQDN gateway lan interface id.\n"
+                },
+                "fqdnLanVpcId": {
+                    "type": "string",
+                    "description": "LAN VPC ID. Only used for GCP FQDN Gateway.\n"
+                },
+                "gwName": {
+                    "type": "string",
+                    "description": "Aviatrix gateway unique name.\n"
+                },
+                "gwSize": {
+                    "type": "string",
+                    "description": "Size of Gateway Instance.\n"
+                },
+                "idleTimeout": {
+                    "type": "integer",
+                    "description": "Typed value when modifying idle_timeout. If it's -1, this feature is disabled.\n"
+                },
+                "imageVersion": {
+                    "type": "string",
+                    "description": "image_version can be used to set the desired image version of the gateway. If set, we will attempt to update the gateway\nto the specified version.\n"
+                },
+                "insaneMode": {
+                    "type": "boolean",
+                    "description": "Enable Insane Mode for Gateway. Valid values: true, false.\n"
+                },
+                "insaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Gateway. Required if insane_mode is set.\n"
+                },
+                "ldapBaseDn": {
+                    "type": "string",
+                    "description": "LDAP base DN. Required: Yes if enable_ldap is 'yes'.\n"
+                },
+                "ldapBindDn": {
+                    "type": "string",
+                    "description": "LDAP bind DN. Required: Yes if enable_ldap is 'yes'.\n"
+                },
+                "ldapPassword": {
+                    "type": "string",
+                    "description": "LDAP password. Required: Yes if enable_ldap is 'yes'.\n"
+                },
+                "ldapServer": {
+                    "type": "string",
+                    "description": "LDAP server address. Required: Yes if enable_ldap is 'yes'.\n"
+                },
+                "ldapUsernameAttribute": {
+                    "type": "string",
+                    "description": "LDAP user attribute. Required: Yes if enable_ldap is 'yes'.\n"
+                },
+                "maxVpnConn": {
+                    "type": "string",
+                    "description": "Maximum connection of VPN access.\n"
+                },
+                "monitorExcludeLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true.\n"
+                },
+                "nameServers": {
+                    "type": "string",
+                    "description": "A list of DNS servers used to resolve domain names by a connected VPN user when Split Tunnel Mode is enabled.\n"
+                },
+                "oktaToken": {
+                    "type": "string",
+                    "description": "Token for Okta auth mode.\n"
+                },
+                "oktaUrl": {
+                    "type": "string",
+                    "description": "URL for Okta auth mode.\n"
+                },
+                "oktaUsernameSuffix": {
+                    "type": "string",
+                    "description": "Username suffix for Okta auth mode.\n"
+                },
+                "otpMode": {
+                    "type": "string",
+                    "description": "Two step authentication mode.\n"
+                },
+                "peeringHaAvailabilityDomain": {
+                    "type": "string",
+                    "description": "Peering HA availability domain for OCI.\n"
+                },
+                "peeringHaAzureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to the Peering HA Gateway.\n"
+                },
+                "peeringHaCloudInstanceId": {
+                    "type": "string",
+                    "description": "Instance ID of the peering HA gateway.\n"
+                },
+                "peeringHaEip": {
+                    "type": "string",
+                    "description": "Public IP address that you want assigned to the HA peering instance.\n"
+                },
+                "peeringHaFaultDomain": {
+                    "type": "string",
+                    "description": "Peering HA fault domain for OCI.\n"
+                },
+                "peeringHaGwName": {
+                    "type": "string",
+                    "description": "Aviatrix gateway unique name of HA gateway.\n"
+                },
+                "peeringHaGwSize": {
+                    "type": "string",
+                    "description": "Peering HA Gateway Size.\n"
+                },
+                "peeringHaImageVersion": {
+                    "type": "string",
+                    "description": "peering_ha_image_version can be used to set the desired image version of the HA gateway. If set, we will attempt to\nupdate the gateway to the specified version.\n"
+                },
+                "peeringHaInsaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Peering HA Gateway. Required if insane_mode is set.\n"
+                },
+                "peeringHaPrivateIp": {
+                    "type": "string",
+                    "description": "Private IP address of HA gateway.\n"
+                },
+                "peeringHaSecurityGroupId": {
+                    "type": "string",
+                    "description": "Peering HA security group used for the gateway.\n"
+                },
+                "peeringHaSoftwareVersion": {
+                    "type": "string",
+                    "description": "peering_ha_software_version can be used to set the desired software version of the HA gateway. If set, we will attempt\nto update the gateway to the specified version. If left blank, the gateway software version will continue to be managed\nthrough the aviatrix_controller_config resource.\n"
+                },
+                "peeringHaSubnet": {
+                    "type": "string",
+                    "description": "Public Subnet Information while creating Peering HA Gateway, only subnet is accepted. Required to create peering ha\ngateway if cloud_type = 1 or 8 (AWS or Azure). Optional if cloud_type = 4 (GCP)\n"
+                },
+                "peeringHaZone": {
+                    "type": "string",
+                    "description": "Zone information for creating Peering HA Gateway. Required to create peering ha gateway if cloud_type = 4 (GCP).\nOptional for cloud_type = 8 (Azure).\n"
+                },
+                "privateIp": {
+                    "type": "string",
+                    "description": "Private IP address of the Gateway created.\n"
+                },
+                "publicDnsServer": {
+                    "type": "string",
+                    "description": "NS server used by the gateway.\n"
+                },
+                "publicSubnetFilteringGuardDutyEnforced": {
+                    "type": "boolean",
+                    "description": "Whether to enforce Guard Duty IP blocking. Required when `enable_public_subnet_filtering` attribute is true. Valid\nvalues: true or false. Default value: true.\n"
+                },
+                "publicSubnetFilteringHaRouteTables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Route tables whose associated public subnets are protected for the HA PSF gateway. Required when\nenable_public_subnet_filtering and peering_ha_subnet are set.\n"
+                },
+                "publicSubnetFilteringRouteTables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Route tables whose associated public subnets are protected. Required when `enable_public_subnet_filtering` attribute is\ntrue.\n"
+                },
+                "renegotiationInterval": {
+                    "type": "integer",
+                    "description": "Typed value when modifying renegotiation_interval. If it's -1, this feature is disabled.\n"
+                },
+                "rxQueueSize": {
+                    "type": "string",
+                    "description": "Gateway ethernet interface RX queue size. Supported for AWS related clouds only.\n"
+                },
+                "samlEnabled": {
+                    "type": "boolean",
+                    "description": "This field indicates whether to enable SAML or not.\n"
+                },
+                "searchDomains": {
+                    "type": "string",
+                    "description": "A list of domain names that will use the NameServer when a specific name is not in the destination when Split Tunnel\nMode is enabled.\n"
+                },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "Security group used for the gateway.\n"
+                },
+                "singleAzHa": {
+                    "type": "boolean",
+                    "description": "Set to true if this feature is desired.\n"
+                },
+                "singleIpSnat": {
+                    "type": "boolean",
+                    "description": "Enable Source NAT for this container.\n"
+                },
+                "softwareVersion": {
+                    "type": "string",
+                    "description": "software_version can be used to set the desired software version of the gateway. If set, we will attempt to update the\ngateway to the specified version. If left blank, the gateway software version will continue to be managed through the\naviatrix_controller_config resource.\n"
+                },
+                "splitTunnel": {
+                    "type": "boolean",
+                    "description": "Specify split tunnel mode.\n"
+                },
+                "spotPrice": {
+                    "type": "string",
+                    "description": "Price for spot instance. NOT supported for production deployment.\n"
+                },
+                "subnet": {
+                    "type": "string",
+                    "description": "A VPC Network address range selected from one of the available network ranges.\n"
+                },
+                "tagLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Instance tag of cloud provider.\n",
+                    "deprecationMessage": "Use tags instead."
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of tags to assign to the gateway.\n"
+                },
+                "tunnelDetectionTime": {
+                    "type": "integer",
+                    "description": "The IPSec tunnel down detection time for the Gateway.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "ID of legacy VPC/Vnet to be connected.\n"
+                },
+                "vpcReg": {
+                    "type": "string",
+                    "description": "Region where this gateway will be launched.\n"
+                },
+                "vpnAccess": {
+                    "type": "boolean",
+                    "description": "Enable user access through VPN to this container.\n"
+                },
+                "vpnCidr": {
+                    "type": "string",
+                    "description": "VPN CIDR block for the container.\n"
+                },
+                "vpnProtocol": {
+                    "type": "string",
+                    "description": "Elb protocol for VPN gateway with elb enabled. Only supports AWS provider. Valid values: 'TCP', 'UDP'. If not specified,\n'TCP'' will be used.\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "Availability Zone. Only available for Azure and Public Subnet Filtering gateway\n"
+                }
+            },
+            "required": [
+                "accountName",
+                "availabilityDomain",
+                "azureEipNameResourceGroup",
+                "cloudInstanceId",
+                "cloudType",
+                "eip",
+                "elbDnsName",
+                "elbName",
+                "faultDomain",
+                "fqdnLanInterface",
+                "gwName",
+                "gwSize",
+                "imageVersion",
+                "peeringHaAvailabilityDomain",
+                "peeringHaAzureEipNameResourceGroup",
+                "peeringHaCloudInstanceId",
+                "peeringHaEip",
+                "peeringHaFaultDomain",
+                "peeringHaGwName",
+                "peeringHaImageVersion",
+                "peeringHaPrivateIp",
+                "peeringHaSecurityGroupId",
+                "peeringHaSoftwareVersion",
+                "privateIp",
+                "publicDnsServer",
+                "securityGroupId",
+                "softwareVersion",
+                "subnet",
+                "tunnelDetectionTime",
+                "vpcId",
+                "vpcReg",
+                "vpnProtocol"
+            ],
+            "inputProperties": {
+                "accountName": {
+                    "type": "string",
+                    "description": "Account name. This account will be used to launch Aviatrix gateway.\n"
+                },
+                "additionalCidrs": {
+                    "type": "string",
+                    "description": "A list of destination CIDR ranges that will also go through the VPN tunnel when Split Tunnel Mode is enabled.\n"
+                },
+                "additionalCidrsDesignatedGateway": {
+                    "type": "string",
+                    "description": "A list of CIDR ranges separated by comma to configure when 'designated_gateway' feature is enabled.\n"
+                },
+                "allocateNewEip": {
+                    "type": "boolean",
+                    "description": "When value is false, reuse an idle address in Elastic IP pool for this gateway. Otherwise, allocate a new Elastic IP and\nuse it for this gateway.\n"
+                },
+                "availabilityDomain": {
+                    "type": "string",
+                    "description": "Availability domain for OCI.\n"
+                },
+                "azureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to this Gateway.\n"
+                },
+                "cloudType": {
+                    "type": "integer",
+                    "description": "Type of cloud service provider.\n"
+                },
+                "customerManagedKeys": {
+                    "type": "string",
+                    "description": "Customer managed key ID.\n"
+                },
+                "duoApiHostname": {
+                    "type": "string",
+                    "description": "API hostname for DUO auth mode.\n"
+                },
+                "duoIntegrationKey": {
+                    "type": "string",
+                    "description": "Integration key for DUO auth mode.\n"
+                },
+                "duoPushMode": {
+                    "type": "string",
+                    "description": "Push mode for DUO auth.\n"
+                },
+                "duoSecretKey": {
+                    "type": "string",
+                    "description": "Secret key for DUO auth mode.\n"
+                },
+                "eip": {
+                    "type": "string",
+                    "description": "Required when allocate_new_eip is false. It uses specified EIP for this gateway.\n"
+                },
+                "elbName": {
+                    "type": "string",
+                    "description": "A name for the ELB that is created.\n"
+                },
+                "enableDesignatedGateway": {
+                    "type": "boolean",
+                    "description": "Enable 'designated_gateway' feature for Gateway. Valid values: true, false.\n"
+                },
+                "enableElb": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable ELB or not.\n"
+                },
+                "enableEncryptVolume": {
+                    "type": "boolean",
+                    "description": "Enable encrypt gateway EBS volume. Only supported for AWS provider. Valid values: true, false. Default value: false.\n"
+                },
+                "enableJumboFrame": {
+                    "type": "boolean",
+                    "description": "Enable jumbo frame support for Gateway. Valid values: true or false. Default value: true.\n"
+                },
+                "enableLdap": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable LDAP or not. Supported values: 'yes' and 'no'.\n"
+                },
+                "enableMonitorGatewaySubnets": {
+                    "type": "boolean",
+                    "description": "Enable monitor gateway subnets. Valid values: true, false. Default value: false.\n"
+                },
+                "enablePublicSubnetFiltering": {
+                    "type": "boolean",
+                    "description": "Create a [Public Subnet Filtering gateway](https://docs.aviatrix.com/HowTos/public_subnet_filtering_faq.html).\n"
+                },
+                "enableSpotInstance": {
+                    "type": "boolean",
+                    "description": "Enable spot instance. NOT supported for production deployment.\n"
+                },
+                "enableVpcDnsServer": {
+                    "type": "boolean",
+                    "description": "Enable vpc_dns_server for Gateway. Valid values: true, false.\n"
+                },
+                "enableVpnNat": {
+                    "type": "boolean",
+                    "description": "This field indicates whether to enable VPN NAT or not. Only supported for VPN gateway. Valid values: true, false.\nDefault value: true.\n"
+                },
+                "faultDomain": {
+                    "type": "string",
+                    "description": "Fault domain for OCI.\n"
+                },
+                "fqdnLanCidr": {
+                    "type": "string",
+                    "description": "FQDN gateway lan interface cidr.\n"
+                },
+                "fqdnLanVpcId": {
+                    "type": "string",
+                    "description": "LAN VPC ID. Only used for GCP FQDN Gateway.\n"
+                },
+                "gwName": {
+                    "type": "string",
+                    "description": "Aviatrix gateway unique name.\n"
+                },
+                "gwSize": {
+                    "type": "string",
+                    "description": "Size of Gateway Instance.\n"
+                },
+                "idleTimeout": {
+                    "type": "integer",
+                    "description": "Typed value when modifying idle_timeout. If it's -1, this feature is disabled.\n"
+                },
+                "imageVersion": {
+                    "type": "string",
+                    "description": "image_version can be used to set the desired image version of the gateway. If set, we will attempt to update the gateway\nto the specified version.\n"
+                },
+                "insaneMode": {
+                    "type": "boolean",
+                    "description": "Enable Insane Mode for Gateway. Valid values: true, false.\n"
+                },
+                "insaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Gateway. Required if insane_mode is set.\n"
+                },
+                "ldapBaseDn": {
+                    "type": "string",
+                    "description": "LDAP base DN. Required: Yes if enable_ldap is 'yes'.\n"
+                },
+                "ldapBindDn": {
+                    "type": "string",
+                    "description": "LDAP bind DN. Required: Yes if enable_ldap is 'yes'.\n"
+                },
+                "ldapPassword": {
+                    "type": "string",
+                    "description": "LDAP password. Required: Yes if enable_ldap is 'yes'.\n"
+                },
+                "ldapServer": {
+                    "type": "string",
+                    "description": "LDAP server address. Required: Yes if enable_ldap is 'yes'.\n"
+                },
+                "ldapUsernameAttribute": {
+                    "type": "string",
+                    "description": "LDAP user attribute. Required: Yes if enable_ldap is 'yes'.\n"
+                },
+                "maxVpnConn": {
+                    "type": "string",
+                    "description": "Maximum connection of VPN access.\n"
+                },
+                "monitorExcludeLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true.\n"
+                },
+                "nameServers": {
+                    "type": "string",
+                    "description": "A list of DNS servers used to resolve domain names by a connected VPN user when Split Tunnel Mode is enabled.\n"
+                },
+                "oktaToken": {
+                    "type": "string",
+                    "description": "Token for Okta auth mode.\n"
+                },
+                "oktaUrl": {
+                    "type": "string",
+                    "description": "URL for Okta auth mode.\n"
+                },
+                "oktaUsernameSuffix": {
+                    "type": "string",
+                    "description": "Username suffix for Okta auth mode.\n"
+                },
+                "otpMode": {
+                    "type": "string",
+                    "description": "Two step authentication mode.\n"
+                },
+                "peeringHaAvailabilityDomain": {
+                    "type": "string",
+                    "description": "Peering HA availability domain for OCI.\n"
+                },
+                "peeringHaAzureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to the Peering HA Gateway.\n"
+                },
+                "peeringHaEip": {
+                    "type": "string",
+                    "description": "Public IP address that you want assigned to the HA peering instance.\n"
+                },
+                "peeringHaFaultDomain": {
+                    "type": "string",
+                    "description": "Peering HA fault domain for OCI.\n"
+                },
+                "peeringHaGwSize": {
+                    "type": "string",
+                    "description": "Peering HA Gateway Size.\n"
+                },
+                "peeringHaImageVersion": {
+                    "type": "string",
+                    "description": "peering_ha_image_version can be used to set the desired image version of the HA gateway. If set, we will attempt to\nupdate the gateway to the specified version.\n"
+                },
+                "peeringHaInsaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Peering HA Gateway. Required if insane_mode is set.\n"
+                },
+                "peeringHaSoftwareVersion": {
+                    "type": "string",
+                    "description": "peering_ha_software_version can be used to set the desired software version of the HA gateway. If set, we will attempt\nto update the gateway to the specified version. If left blank, the gateway software version will continue to be managed\nthrough the aviatrix_controller_config resource.\n"
+                },
+                "peeringHaSubnet": {
+                    "type": "string",
+                    "description": "Public Subnet Information while creating Peering HA Gateway, only subnet is accepted. Required to create peering ha\ngateway if cloud_type = 1 or 8 (AWS or Azure). Optional if cloud_type = 4 (GCP)\n"
+                },
+                "peeringHaZone": {
+                    "type": "string",
+                    "description": "Zone information for creating Peering HA Gateway. Required to create peering ha gateway if cloud_type = 4 (GCP).\nOptional for cloud_type = 8 (Azure).\n"
+                },
+                "publicSubnetFilteringGuardDutyEnforced": {
+                    "type": "boolean",
+                    "description": "Whether to enforce Guard Duty IP blocking. Required when `enable_public_subnet_filtering` attribute is true. Valid\nvalues: true or false. Default value: true.\n"
+                },
+                "publicSubnetFilteringHaRouteTables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Route tables whose associated public subnets are protected for the HA PSF gateway. Required when\nenable_public_subnet_filtering and peering_ha_subnet are set.\n"
+                },
+                "publicSubnetFilteringRouteTables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Route tables whose associated public subnets are protected. Required when `enable_public_subnet_filtering` attribute is\ntrue.\n"
+                },
+                "renegotiationInterval": {
+                    "type": "integer",
+                    "description": "Typed value when modifying renegotiation_interval. If it's -1, this feature is disabled.\n"
+                },
+                "rxQueueSize": {
+                    "type": "string",
+                    "description": "Gateway ethernet interface RX queue size. Supported for AWS related clouds only.\n"
+                },
+                "samlEnabled": {
+                    "type": "boolean",
+                    "description": "This field indicates whether to enable SAML or not.\n"
+                },
+                "searchDomains": {
+                    "type": "string",
+                    "description": "A list of domain names that will use the NameServer when a specific name is not in the destination when Split Tunnel\nMode is enabled.\n"
+                },
+                "singleAzHa": {
+                    "type": "boolean",
+                    "description": "Set to true if this feature is desired.\n"
+                },
+                "singleIpSnat": {
+                    "type": "boolean",
+                    "description": "Enable Source NAT for this container.\n"
+                },
+                "softwareVersion": {
+                    "type": "string",
+                    "description": "software_version can be used to set the desired software version of the gateway. If set, we will attempt to update the\ngateway to the specified version. If left blank, the gateway software version will continue to be managed through the\naviatrix_controller_config resource.\n"
+                },
+                "splitTunnel": {
+                    "type": "boolean",
+                    "description": "Specify split tunnel mode.\n"
+                },
+                "spotPrice": {
+                    "type": "string",
+                    "description": "Price for spot instance. NOT supported for production deployment.\n"
+                },
+                "subnet": {
+                    "type": "string",
+                    "description": "A VPC Network address range selected from one of the available network ranges.\n"
+                },
+                "tagLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Instance tag of cloud provider.\n",
+                    "deprecationMessage": "Use tags instead."
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of tags to assign to the gateway.\n"
+                },
+                "tunnelDetectionTime": {
+                    "type": "integer",
+                    "description": "The IPSec tunnel down detection time for the Gateway.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "ID of legacy VPC/Vnet to be connected.\n"
+                },
+                "vpcReg": {
+                    "type": "string",
+                    "description": "Region where this gateway will be launched.\n"
+                },
+                "vpnAccess": {
+                    "type": "boolean",
+                    "description": "Enable user access through VPN to this container.\n"
+                },
+                "vpnCidr": {
+                    "type": "string",
+                    "description": "VPN CIDR block for the container.\n"
+                },
+                "vpnProtocol": {
+                    "type": "string",
+                    "description": "Elb protocol for VPN gateway with elb enabled. Only supports AWS provider. Valid values: 'TCP', 'UDP'. If not specified,\n'TCP'' will be used.\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "Availability Zone. Only available for Azure and Public Subnet Filtering gateway\n"
+                }
+            },
+            "requiredInputs": [
+                "accountName",
+                "cloudType",
+                "gwName",
+                "gwSize",
+                "subnet",
+                "vpcId",
+                "vpcReg"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Gateway resources.\n",
+                "properties": {
+                    "accountName": {
+                        "type": "string",
+                        "description": "Account name. This account will be used to launch Aviatrix gateway.\n"
+                    },
+                    "additionalCidrs": {
+                        "type": "string",
+                        "description": "A list of destination CIDR ranges that will also go through the VPN tunnel when Split Tunnel Mode is enabled.\n"
+                    },
+                    "additionalCidrsDesignatedGateway": {
+                        "type": "string",
+                        "description": "A list of CIDR ranges separated by comma to configure when 'designated_gateway' feature is enabled.\n"
+                    },
+                    "allocateNewEip": {
+                        "type": "boolean",
+                        "description": "When value is false, reuse an idle address in Elastic IP pool for this gateway. Otherwise, allocate a new Elastic IP and\nuse it for this gateway.\n"
+                    },
+                    "availabilityDomain": {
+                        "type": "string",
+                        "description": "Availability domain for OCI.\n"
+                    },
+                    "azureEipNameResourceGroup": {
+                        "type": "string",
+                        "description": "The name of the public IP address and its resource group in Azure to assign to this Gateway.\n"
+                    },
+                    "cloudInstanceId": {
+                        "type": "string",
+                        "description": "Instance ID of the gateway.\n"
+                    },
+                    "cloudType": {
+                        "type": "integer",
+                        "description": "Type of cloud service provider.\n"
+                    },
+                    "customerManagedKeys": {
+                        "type": "string",
+                        "description": "Customer managed key ID.\n"
+                    },
+                    "duoApiHostname": {
+                        "type": "string",
+                        "description": "API hostname for DUO auth mode.\n"
+                    },
+                    "duoIntegrationKey": {
+                        "type": "string",
+                        "description": "Integration key for DUO auth mode.\n"
+                    },
+                    "duoPushMode": {
+                        "type": "string",
+                        "description": "Push mode for DUO auth.\n"
+                    },
+                    "duoSecretKey": {
+                        "type": "string",
+                        "description": "Secret key for DUO auth mode.\n"
+                    },
+                    "eip": {
+                        "type": "string",
+                        "description": "Required when allocate_new_eip is false. It uses specified EIP for this gateway.\n"
+                    },
+                    "elbDnsName": {
+                        "type": "string",
+                        "description": "ELB DNS Name.\n"
+                    },
+                    "elbName": {
+                        "type": "string",
+                        "description": "A name for the ELB that is created.\n"
+                    },
+                    "enableDesignatedGateway": {
+                        "type": "boolean",
+                        "description": "Enable 'designated_gateway' feature for Gateway. Valid values: true, false.\n"
+                    },
+                    "enableElb": {
+                        "type": "boolean",
+                        "description": "Specify whether to enable ELB or not.\n"
+                    },
+                    "enableEncryptVolume": {
+                        "type": "boolean",
+                        "description": "Enable encrypt gateway EBS volume. Only supported for AWS provider. Valid values: true, false. Default value: false.\n"
+                    },
+                    "enableJumboFrame": {
+                        "type": "boolean",
+                        "description": "Enable jumbo frame support for Gateway. Valid values: true or false. Default value: true.\n"
+                    },
+                    "enableLdap": {
+                        "type": "boolean",
+                        "description": "Specify whether to enable LDAP or not. Supported values: 'yes' and 'no'.\n"
+                    },
+                    "enableMonitorGatewaySubnets": {
+                        "type": "boolean",
+                        "description": "Enable monitor gateway subnets. Valid values: true, false. Default value: false.\n"
+                    },
+                    "enablePublicSubnetFiltering": {
+                        "type": "boolean",
+                        "description": "Create a [Public Subnet Filtering gateway](https://docs.aviatrix.com/HowTos/public_subnet_filtering_faq.html).\n"
+                    },
+                    "enableSpotInstance": {
+                        "type": "boolean",
+                        "description": "Enable spot instance. NOT supported for production deployment.\n"
+                    },
+                    "enableVpcDnsServer": {
+                        "type": "boolean",
+                        "description": "Enable vpc_dns_server for Gateway. Valid values: true, false.\n"
+                    },
+                    "enableVpnNat": {
+                        "type": "boolean",
+                        "description": "This field indicates whether to enable VPN NAT or not. Only supported for VPN gateway. Valid values: true, false.\nDefault value: true.\n"
+                    },
+                    "faultDomain": {
+                        "type": "string",
+                        "description": "Fault domain for OCI.\n"
+                    },
+                    "fqdnLanCidr": {
+                        "type": "string",
+                        "description": "FQDN gateway lan interface cidr.\n"
+                    },
+                    "fqdnLanInterface": {
+                        "type": "string",
+                        "description": "FQDN gateway lan interface id.\n"
+                    },
+                    "fqdnLanVpcId": {
+                        "type": "string",
+                        "description": "LAN VPC ID. Only used for GCP FQDN Gateway.\n"
+                    },
+                    "gwName": {
+                        "type": "string",
+                        "description": "Aviatrix gateway unique name.\n"
+                    },
+                    "gwSize": {
+                        "type": "string",
+                        "description": "Size of Gateway Instance.\n"
+                    },
+                    "idleTimeout": {
+                        "type": "integer",
+                        "description": "Typed value when modifying idle_timeout. If it's -1, this feature is disabled.\n"
+                    },
+                    "imageVersion": {
+                        "type": "string",
+                        "description": "image_version can be used to set the desired image version of the gateway. If set, we will attempt to update the gateway\nto the specified version.\n"
+                    },
+                    "insaneMode": {
+                        "type": "boolean",
+                        "description": "Enable Insane Mode for Gateway. Valid values: true, false.\n"
+                    },
+                    "insaneModeAz": {
+                        "type": "string",
+                        "description": "AZ of subnet being created for Insane Mode Gateway. Required if insane_mode is set.\n"
+                    },
+                    "ldapBaseDn": {
+                        "type": "string",
+                        "description": "LDAP base DN. Required: Yes if enable_ldap is 'yes'.\n"
+                    },
+                    "ldapBindDn": {
+                        "type": "string",
+                        "description": "LDAP bind DN. Required: Yes if enable_ldap is 'yes'.\n"
+                    },
+                    "ldapPassword": {
+                        "type": "string",
+                        "description": "LDAP password. Required: Yes if enable_ldap is 'yes'.\n"
+                    },
+                    "ldapServer": {
+                        "type": "string",
+                        "description": "LDAP server address. Required: Yes if enable_ldap is 'yes'.\n"
+                    },
+                    "ldapUsernameAttribute": {
+                        "type": "string",
+                        "description": "LDAP user attribute. Required: Yes if enable_ldap is 'yes'.\n"
+                    },
+                    "maxVpnConn": {
+                        "type": "string",
+                        "description": "Maximum connection of VPN access.\n"
+                    },
+                    "monitorExcludeLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true.\n"
+                    },
+                    "nameServers": {
+                        "type": "string",
+                        "description": "A list of DNS servers used to resolve domain names by a connected VPN user when Split Tunnel Mode is enabled.\n"
+                    },
+                    "oktaToken": {
+                        "type": "string",
+                        "description": "Token for Okta auth mode.\n"
+                    },
+                    "oktaUrl": {
+                        "type": "string",
+                        "description": "URL for Okta auth mode.\n"
+                    },
+                    "oktaUsernameSuffix": {
+                        "type": "string",
+                        "description": "Username suffix for Okta auth mode.\n"
+                    },
+                    "otpMode": {
+                        "type": "string",
+                        "description": "Two step authentication mode.\n"
+                    },
+                    "peeringHaAvailabilityDomain": {
+                        "type": "string",
+                        "description": "Peering HA availability domain for OCI.\n"
+                    },
+                    "peeringHaAzureEipNameResourceGroup": {
+                        "type": "string",
+                        "description": "The name of the public IP address and its resource group in Azure to assign to the Peering HA Gateway.\n"
+                    },
+                    "peeringHaCloudInstanceId": {
+                        "type": "string",
+                        "description": "Instance ID of the peering HA gateway.\n"
+                    },
+                    "peeringHaEip": {
+                        "type": "string",
+                        "description": "Public IP address that you want assigned to the HA peering instance.\n"
+                    },
+                    "peeringHaFaultDomain": {
+                        "type": "string",
+                        "description": "Peering HA fault domain for OCI.\n"
+                    },
+                    "peeringHaGwName": {
+                        "type": "string",
+                        "description": "Aviatrix gateway unique name of HA gateway.\n"
+                    },
+                    "peeringHaGwSize": {
+                        "type": "string",
+                        "description": "Peering HA Gateway Size.\n"
+                    },
+                    "peeringHaImageVersion": {
+                        "type": "string",
+                        "description": "peering_ha_image_version can be used to set the desired image version of the HA gateway. If set, we will attempt to\nupdate the gateway to the specified version.\n"
+                    },
+                    "peeringHaInsaneModeAz": {
+                        "type": "string",
+                        "description": "AZ of subnet being created for Insane Mode Peering HA Gateway. Required if insane_mode is set.\n"
+                    },
+                    "peeringHaPrivateIp": {
+                        "type": "string",
+                        "description": "Private IP address of HA gateway.\n"
+                    },
+                    "peeringHaSecurityGroupId": {
+                        "type": "string",
+                        "description": "Peering HA security group used for the gateway.\n"
+                    },
+                    "peeringHaSoftwareVersion": {
+                        "type": "string",
+                        "description": "peering_ha_software_version can be used to set the desired software version of the HA gateway. If set, we will attempt\nto update the gateway to the specified version. If left blank, the gateway software version will continue to be managed\nthrough the aviatrix_controller_config resource.\n"
+                    },
+                    "peeringHaSubnet": {
+                        "type": "string",
+                        "description": "Public Subnet Information while creating Peering HA Gateway, only subnet is accepted. Required to create peering ha\ngateway if cloud_type = 1 or 8 (AWS or Azure). Optional if cloud_type = 4 (GCP)\n"
+                    },
+                    "peeringHaZone": {
+                        "type": "string",
+                        "description": "Zone information for creating Peering HA Gateway. Required to create peering ha gateway if cloud_type = 4 (GCP).\nOptional for cloud_type = 8 (Azure).\n"
+                    },
+                    "privateIp": {
+                        "type": "string",
+                        "description": "Private IP address of the Gateway created.\n"
+                    },
+                    "publicDnsServer": {
+                        "type": "string",
+                        "description": "NS server used by the gateway.\n"
+                    },
+                    "publicSubnetFilteringGuardDutyEnforced": {
+                        "type": "boolean",
+                        "description": "Whether to enforce Guard Duty IP blocking. Required when `enable_public_subnet_filtering` attribute is true. Valid\nvalues: true or false. Default value: true.\n"
+                    },
+                    "publicSubnetFilteringHaRouteTables": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Route tables whose associated public subnets are protected for the HA PSF gateway. Required when\nenable_public_subnet_filtering and peering_ha_subnet are set.\n"
+                    },
+                    "publicSubnetFilteringRouteTables": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Route tables whose associated public subnets are protected. Required when `enable_public_subnet_filtering` attribute is\ntrue.\n"
+                    },
+                    "renegotiationInterval": {
+                        "type": "integer",
+                        "description": "Typed value when modifying renegotiation_interval. If it's -1, this feature is disabled.\n"
+                    },
+                    "rxQueueSize": {
+                        "type": "string",
+                        "description": "Gateway ethernet interface RX queue size. Supported for AWS related clouds only.\n"
+                    },
+                    "samlEnabled": {
+                        "type": "boolean",
+                        "description": "This field indicates whether to enable SAML or not.\n"
+                    },
+                    "searchDomains": {
+                        "type": "string",
+                        "description": "A list of domain names that will use the NameServer when a specific name is not in the destination when Split Tunnel\nMode is enabled.\n"
+                    },
+                    "securityGroupId": {
+                        "type": "string",
+                        "description": "Security group used for the gateway.\n"
+                    },
+                    "singleAzHa": {
+                        "type": "boolean",
+                        "description": "Set to true if this feature is desired.\n"
+                    },
+                    "singleIpSnat": {
+                        "type": "boolean",
+                        "description": "Enable Source NAT for this container.\n"
+                    },
+                    "softwareVersion": {
+                        "type": "string",
+                        "description": "software_version can be used to set the desired software version of the gateway. If set, we will attempt to update the\ngateway to the specified version. If left blank, the gateway software version will continue to be managed through the\naviatrix_controller_config resource.\n"
+                    },
+                    "splitTunnel": {
+                        "type": "boolean",
+                        "description": "Specify split tunnel mode.\n"
+                    },
+                    "spotPrice": {
+                        "type": "string",
+                        "description": "Price for spot instance. NOT supported for production deployment.\n"
+                    },
+                    "subnet": {
+                        "type": "string",
+                        "description": "A VPC Network address range selected from one of the available network ranges.\n"
+                    },
+                    "tagLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Instance tag of cloud provider.\n",
+                        "deprecationMessage": "Use tags instead."
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of tags to assign to the gateway.\n"
+                    },
+                    "tunnelDetectionTime": {
+                        "type": "integer",
+                        "description": "The IPSec tunnel down detection time for the Gateway.\n"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "ID of legacy VPC/Vnet to be connected.\n"
+                    },
+                    "vpcReg": {
+                        "type": "string",
+                        "description": "Region where this gateway will be launched.\n"
+                    },
+                    "vpnAccess": {
+                        "type": "boolean",
+                        "description": "Enable user access through VPN to this container.\n"
+                    },
+                    "vpnCidr": {
+                        "type": "string",
+                        "description": "VPN CIDR block for the container.\n"
+                    },
+                    "vpnProtocol": {
+                        "type": "string",
+                        "description": "Elb protocol for VPN gateway with elb enabled. Only supports AWS provider. Valid values: 'TCP', 'UDP'. If not specified,\n'TCP'' will be used.\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "Availability Zone. Only available for Azure and Public Subnet Filtering gateway\n"
                     }
                 },
                 "type": "object"
