@@ -24,6 +24,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "aviatrix:index/gateway:Gateway":
 		r = &Gateway{}
+	case "aviatrix:index/gatewaySNAT:GatewaySNAT":
+		r = &GatewaySNAT{}
+	case "aviatrix:index/spokeGateway:SpokeGateway":
+		r = &SpokeGateway{}
+	case "aviatrix:index/transitGateway:TransitGateway":
+		r = &TransitGateway{}
 	case "aviatrix:index/vpc:Vpc":
 		r = &Vpc{}
 	default:
@@ -62,6 +68,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aviatrix",
 		"index/gateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aviatrix",
+		"index/gatewaySNAT",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aviatrix",
+		"index/spokeGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aviatrix",
+		"index/transitGateway",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -4,6 +4,16 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface TransitGatewayBgpLanInterface {
+    subnet: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
+}
+
+export interface TransitGatewayHaBgpLanInterface {
+    subnet: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
+}
+
 export interface VpcPrivateSubnet {
     cidr?: pulumi.Input<string>;
     name?: pulumi.Input<string>;

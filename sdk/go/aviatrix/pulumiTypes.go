@@ -10,6 +10,366 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GatewaySNATSnatPolicy struct {
+	ApplyRouteEntry *bool   `pulumi:"applyRouteEntry"`
+	Connection      *string `pulumi:"connection"`
+	DstCidr         *string `pulumi:"dstCidr"`
+	DstPort         *string `pulumi:"dstPort"`
+	ExcludeRtb      *string `pulumi:"excludeRtb"`
+	Interface       *string `pulumi:"interface"`
+	Mark            *string `pulumi:"mark"`
+	Protocol        *string `pulumi:"protocol"`
+	SnatIps         *string `pulumi:"snatIps"`
+	SnatPort        *string `pulumi:"snatPort"`
+	SrcCidr         *string `pulumi:"srcCidr"`
+	SrcPort         *string `pulumi:"srcPort"`
+}
+
+// GatewaySNATSnatPolicyInput is an input type that accepts GatewaySNATSnatPolicyArgs and GatewaySNATSnatPolicyOutput values.
+// You can construct a concrete instance of `GatewaySNATSnatPolicyInput` via:
+//
+//          GatewaySNATSnatPolicyArgs{...}
+type GatewaySNATSnatPolicyInput interface {
+	pulumi.Input
+
+	ToGatewaySNATSnatPolicyOutput() GatewaySNATSnatPolicyOutput
+	ToGatewaySNATSnatPolicyOutputWithContext(context.Context) GatewaySNATSnatPolicyOutput
+}
+
+type GatewaySNATSnatPolicyArgs struct {
+	ApplyRouteEntry pulumi.BoolPtrInput   `pulumi:"applyRouteEntry"`
+	Connection      pulumi.StringPtrInput `pulumi:"connection"`
+	DstCidr         pulumi.StringPtrInput `pulumi:"dstCidr"`
+	DstPort         pulumi.StringPtrInput `pulumi:"dstPort"`
+	ExcludeRtb      pulumi.StringPtrInput `pulumi:"excludeRtb"`
+	Interface       pulumi.StringPtrInput `pulumi:"interface"`
+	Mark            pulumi.StringPtrInput `pulumi:"mark"`
+	Protocol        pulumi.StringPtrInput `pulumi:"protocol"`
+	SnatIps         pulumi.StringPtrInput `pulumi:"snatIps"`
+	SnatPort        pulumi.StringPtrInput `pulumi:"snatPort"`
+	SrcCidr         pulumi.StringPtrInput `pulumi:"srcCidr"`
+	SrcPort         pulumi.StringPtrInput `pulumi:"srcPort"`
+}
+
+func (GatewaySNATSnatPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaySNATSnatPolicy)(nil)).Elem()
+}
+
+func (i GatewaySNATSnatPolicyArgs) ToGatewaySNATSnatPolicyOutput() GatewaySNATSnatPolicyOutput {
+	return i.ToGatewaySNATSnatPolicyOutputWithContext(context.Background())
+}
+
+func (i GatewaySNATSnatPolicyArgs) ToGatewaySNATSnatPolicyOutputWithContext(ctx context.Context) GatewaySNATSnatPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaySNATSnatPolicyOutput)
+}
+
+// GatewaySNATSnatPolicyArrayInput is an input type that accepts GatewaySNATSnatPolicyArray and GatewaySNATSnatPolicyArrayOutput values.
+// You can construct a concrete instance of `GatewaySNATSnatPolicyArrayInput` via:
+//
+//          GatewaySNATSnatPolicyArray{ GatewaySNATSnatPolicyArgs{...} }
+type GatewaySNATSnatPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGatewaySNATSnatPolicyArrayOutput() GatewaySNATSnatPolicyArrayOutput
+	ToGatewaySNATSnatPolicyArrayOutputWithContext(context.Context) GatewaySNATSnatPolicyArrayOutput
+}
+
+type GatewaySNATSnatPolicyArray []GatewaySNATSnatPolicyInput
+
+func (GatewaySNATSnatPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewaySNATSnatPolicy)(nil)).Elem()
+}
+
+func (i GatewaySNATSnatPolicyArray) ToGatewaySNATSnatPolicyArrayOutput() GatewaySNATSnatPolicyArrayOutput {
+	return i.ToGatewaySNATSnatPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GatewaySNATSnatPolicyArray) ToGatewaySNATSnatPolicyArrayOutputWithContext(ctx context.Context) GatewaySNATSnatPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaySNATSnatPolicyArrayOutput)
+}
+
+type GatewaySNATSnatPolicyOutput struct{ *pulumi.OutputState }
+
+func (GatewaySNATSnatPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaySNATSnatPolicy)(nil)).Elem()
+}
+
+func (o GatewaySNATSnatPolicyOutput) ToGatewaySNATSnatPolicyOutput() GatewaySNATSnatPolicyOutput {
+	return o
+}
+
+func (o GatewaySNATSnatPolicyOutput) ToGatewaySNATSnatPolicyOutputWithContext(ctx context.Context) GatewaySNATSnatPolicyOutput {
+	return o
+}
+
+func (o GatewaySNATSnatPolicyOutput) ApplyRouteEntry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *bool { return v.ApplyRouteEntry }).(pulumi.BoolPtrOutput)
+}
+
+func (o GatewaySNATSnatPolicyOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *string { return v.Connection }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewaySNATSnatPolicyOutput) DstCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *string { return v.DstCidr }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewaySNATSnatPolicyOutput) DstPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *string { return v.DstPort }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewaySNATSnatPolicyOutput) ExcludeRtb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *string { return v.ExcludeRtb }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewaySNATSnatPolicyOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *string { return v.Interface }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewaySNATSnatPolicyOutput) Mark() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *string { return v.Mark }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewaySNATSnatPolicyOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewaySNATSnatPolicyOutput) SnatIps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *string { return v.SnatIps }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewaySNATSnatPolicyOutput) SnatPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *string { return v.SnatPort }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewaySNATSnatPolicyOutput) SrcCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *string { return v.SrcCidr }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewaySNATSnatPolicyOutput) SrcPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaySNATSnatPolicy) *string { return v.SrcPort }).(pulumi.StringPtrOutput)
+}
+
+type GatewaySNATSnatPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewaySNATSnatPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewaySNATSnatPolicy)(nil)).Elem()
+}
+
+func (o GatewaySNATSnatPolicyArrayOutput) ToGatewaySNATSnatPolicyArrayOutput() GatewaySNATSnatPolicyArrayOutput {
+	return o
+}
+
+func (o GatewaySNATSnatPolicyArrayOutput) ToGatewaySNATSnatPolicyArrayOutputWithContext(ctx context.Context) GatewaySNATSnatPolicyArrayOutput {
+	return o
+}
+
+func (o GatewaySNATSnatPolicyArrayOutput) Index(i pulumi.IntInput) GatewaySNATSnatPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewaySNATSnatPolicy {
+		return vs[0].([]GatewaySNATSnatPolicy)[vs[1].(int)]
+	}).(GatewaySNATSnatPolicyOutput)
+}
+
+type TransitGatewayBgpLanInterface struct {
+	Subnet string `pulumi:"subnet"`
+	VpcId  string `pulumi:"vpcId"`
+}
+
+// TransitGatewayBgpLanInterfaceInput is an input type that accepts TransitGatewayBgpLanInterfaceArgs and TransitGatewayBgpLanInterfaceOutput values.
+// You can construct a concrete instance of `TransitGatewayBgpLanInterfaceInput` via:
+//
+//          TransitGatewayBgpLanInterfaceArgs{...}
+type TransitGatewayBgpLanInterfaceInput interface {
+	pulumi.Input
+
+	ToTransitGatewayBgpLanInterfaceOutput() TransitGatewayBgpLanInterfaceOutput
+	ToTransitGatewayBgpLanInterfaceOutputWithContext(context.Context) TransitGatewayBgpLanInterfaceOutput
+}
+
+type TransitGatewayBgpLanInterfaceArgs struct {
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+	VpcId  pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (TransitGatewayBgpLanInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayBgpLanInterface)(nil)).Elem()
+}
+
+func (i TransitGatewayBgpLanInterfaceArgs) ToTransitGatewayBgpLanInterfaceOutput() TransitGatewayBgpLanInterfaceOutput {
+	return i.ToTransitGatewayBgpLanInterfaceOutputWithContext(context.Background())
+}
+
+func (i TransitGatewayBgpLanInterfaceArgs) ToTransitGatewayBgpLanInterfaceOutputWithContext(ctx context.Context) TransitGatewayBgpLanInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayBgpLanInterfaceOutput)
+}
+
+// TransitGatewayBgpLanInterfaceArrayInput is an input type that accepts TransitGatewayBgpLanInterfaceArray and TransitGatewayBgpLanInterfaceArrayOutput values.
+// You can construct a concrete instance of `TransitGatewayBgpLanInterfaceArrayInput` via:
+//
+//          TransitGatewayBgpLanInterfaceArray{ TransitGatewayBgpLanInterfaceArgs{...} }
+type TransitGatewayBgpLanInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToTransitGatewayBgpLanInterfaceArrayOutput() TransitGatewayBgpLanInterfaceArrayOutput
+	ToTransitGatewayBgpLanInterfaceArrayOutputWithContext(context.Context) TransitGatewayBgpLanInterfaceArrayOutput
+}
+
+type TransitGatewayBgpLanInterfaceArray []TransitGatewayBgpLanInterfaceInput
+
+func (TransitGatewayBgpLanInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransitGatewayBgpLanInterface)(nil)).Elem()
+}
+
+func (i TransitGatewayBgpLanInterfaceArray) ToTransitGatewayBgpLanInterfaceArrayOutput() TransitGatewayBgpLanInterfaceArrayOutput {
+	return i.ToTransitGatewayBgpLanInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i TransitGatewayBgpLanInterfaceArray) ToTransitGatewayBgpLanInterfaceArrayOutputWithContext(ctx context.Context) TransitGatewayBgpLanInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayBgpLanInterfaceArrayOutput)
+}
+
+type TransitGatewayBgpLanInterfaceOutput struct{ *pulumi.OutputState }
+
+func (TransitGatewayBgpLanInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayBgpLanInterface)(nil)).Elem()
+}
+
+func (o TransitGatewayBgpLanInterfaceOutput) ToTransitGatewayBgpLanInterfaceOutput() TransitGatewayBgpLanInterfaceOutput {
+	return o
+}
+
+func (o TransitGatewayBgpLanInterfaceOutput) ToTransitGatewayBgpLanInterfaceOutputWithContext(ctx context.Context) TransitGatewayBgpLanInterfaceOutput {
+	return o
+}
+
+func (o TransitGatewayBgpLanInterfaceOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v TransitGatewayBgpLanInterface) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+func (o TransitGatewayBgpLanInterfaceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v TransitGatewayBgpLanInterface) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type TransitGatewayBgpLanInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (TransitGatewayBgpLanInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransitGatewayBgpLanInterface)(nil)).Elem()
+}
+
+func (o TransitGatewayBgpLanInterfaceArrayOutput) ToTransitGatewayBgpLanInterfaceArrayOutput() TransitGatewayBgpLanInterfaceArrayOutput {
+	return o
+}
+
+func (o TransitGatewayBgpLanInterfaceArrayOutput) ToTransitGatewayBgpLanInterfaceArrayOutputWithContext(ctx context.Context) TransitGatewayBgpLanInterfaceArrayOutput {
+	return o
+}
+
+func (o TransitGatewayBgpLanInterfaceArrayOutput) Index(i pulumi.IntInput) TransitGatewayBgpLanInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransitGatewayBgpLanInterface {
+		return vs[0].([]TransitGatewayBgpLanInterface)[vs[1].(int)]
+	}).(TransitGatewayBgpLanInterfaceOutput)
+}
+
+type TransitGatewayHaBgpLanInterface struct {
+	Subnet string `pulumi:"subnet"`
+	VpcId  string `pulumi:"vpcId"`
+}
+
+// TransitGatewayHaBgpLanInterfaceInput is an input type that accepts TransitGatewayHaBgpLanInterfaceArgs and TransitGatewayHaBgpLanInterfaceOutput values.
+// You can construct a concrete instance of `TransitGatewayHaBgpLanInterfaceInput` via:
+//
+//          TransitGatewayHaBgpLanInterfaceArgs{...}
+type TransitGatewayHaBgpLanInterfaceInput interface {
+	pulumi.Input
+
+	ToTransitGatewayHaBgpLanInterfaceOutput() TransitGatewayHaBgpLanInterfaceOutput
+	ToTransitGatewayHaBgpLanInterfaceOutputWithContext(context.Context) TransitGatewayHaBgpLanInterfaceOutput
+}
+
+type TransitGatewayHaBgpLanInterfaceArgs struct {
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+	VpcId  pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (TransitGatewayHaBgpLanInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayHaBgpLanInterface)(nil)).Elem()
+}
+
+func (i TransitGatewayHaBgpLanInterfaceArgs) ToTransitGatewayHaBgpLanInterfaceOutput() TransitGatewayHaBgpLanInterfaceOutput {
+	return i.ToTransitGatewayHaBgpLanInterfaceOutputWithContext(context.Background())
+}
+
+func (i TransitGatewayHaBgpLanInterfaceArgs) ToTransitGatewayHaBgpLanInterfaceOutputWithContext(ctx context.Context) TransitGatewayHaBgpLanInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayHaBgpLanInterfaceOutput)
+}
+
+// TransitGatewayHaBgpLanInterfaceArrayInput is an input type that accepts TransitGatewayHaBgpLanInterfaceArray and TransitGatewayHaBgpLanInterfaceArrayOutput values.
+// You can construct a concrete instance of `TransitGatewayHaBgpLanInterfaceArrayInput` via:
+//
+//          TransitGatewayHaBgpLanInterfaceArray{ TransitGatewayHaBgpLanInterfaceArgs{...} }
+type TransitGatewayHaBgpLanInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToTransitGatewayHaBgpLanInterfaceArrayOutput() TransitGatewayHaBgpLanInterfaceArrayOutput
+	ToTransitGatewayHaBgpLanInterfaceArrayOutputWithContext(context.Context) TransitGatewayHaBgpLanInterfaceArrayOutput
+}
+
+type TransitGatewayHaBgpLanInterfaceArray []TransitGatewayHaBgpLanInterfaceInput
+
+func (TransitGatewayHaBgpLanInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransitGatewayHaBgpLanInterface)(nil)).Elem()
+}
+
+func (i TransitGatewayHaBgpLanInterfaceArray) ToTransitGatewayHaBgpLanInterfaceArrayOutput() TransitGatewayHaBgpLanInterfaceArrayOutput {
+	return i.ToTransitGatewayHaBgpLanInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i TransitGatewayHaBgpLanInterfaceArray) ToTransitGatewayHaBgpLanInterfaceArrayOutputWithContext(ctx context.Context) TransitGatewayHaBgpLanInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayHaBgpLanInterfaceArrayOutput)
+}
+
+type TransitGatewayHaBgpLanInterfaceOutput struct{ *pulumi.OutputState }
+
+func (TransitGatewayHaBgpLanInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayHaBgpLanInterface)(nil)).Elem()
+}
+
+func (o TransitGatewayHaBgpLanInterfaceOutput) ToTransitGatewayHaBgpLanInterfaceOutput() TransitGatewayHaBgpLanInterfaceOutput {
+	return o
+}
+
+func (o TransitGatewayHaBgpLanInterfaceOutput) ToTransitGatewayHaBgpLanInterfaceOutputWithContext(ctx context.Context) TransitGatewayHaBgpLanInterfaceOutput {
+	return o
+}
+
+func (o TransitGatewayHaBgpLanInterfaceOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v TransitGatewayHaBgpLanInterface) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+func (o TransitGatewayHaBgpLanInterfaceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v TransitGatewayHaBgpLanInterface) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type TransitGatewayHaBgpLanInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (TransitGatewayHaBgpLanInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransitGatewayHaBgpLanInterface)(nil)).Elem()
+}
+
+func (o TransitGatewayHaBgpLanInterfaceArrayOutput) ToTransitGatewayHaBgpLanInterfaceArrayOutput() TransitGatewayHaBgpLanInterfaceArrayOutput {
+	return o
+}
+
+func (o TransitGatewayHaBgpLanInterfaceArrayOutput) ToTransitGatewayHaBgpLanInterfaceArrayOutputWithContext(ctx context.Context) TransitGatewayHaBgpLanInterfaceArrayOutput {
+	return o
+}
+
+func (o TransitGatewayHaBgpLanInterfaceArrayOutput) Index(i pulumi.IntInput) TransitGatewayHaBgpLanInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransitGatewayHaBgpLanInterface {
+		return vs[0].([]TransitGatewayHaBgpLanInterface)[vs[1].(int)]
+	}).(TransitGatewayHaBgpLanInterfaceOutput)
+}
+
 type VpcPrivateSubnet struct {
 	Cidr     *string `pulumi:"cidr"`
 	Name     *string `pulumi:"name"`
@@ -335,12 +695,24 @@ func (o VpcSubnetArrayOutput) Index(i pulumi.IntInput) VpcSubnetOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySNATSnatPolicyInput)(nil)).Elem(), GatewaySNATSnatPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySNATSnatPolicyArrayInput)(nil)).Elem(), GatewaySNATSnatPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitGatewayBgpLanInterfaceInput)(nil)).Elem(), TransitGatewayBgpLanInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitGatewayBgpLanInterfaceArrayInput)(nil)).Elem(), TransitGatewayBgpLanInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitGatewayHaBgpLanInterfaceInput)(nil)).Elem(), TransitGatewayHaBgpLanInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitGatewayHaBgpLanInterfaceArrayInput)(nil)).Elem(), TransitGatewayHaBgpLanInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPrivateSubnetInput)(nil)).Elem(), VpcPrivateSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPrivateSubnetArrayInput)(nil)).Elem(), VpcPrivateSubnetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPublicSubnetInput)(nil)).Elem(), VpcPublicSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPublicSubnetArrayInput)(nil)).Elem(), VpcPublicSubnetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetInput)(nil)).Elem(), VpcSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetArrayInput)(nil)).Elem(), VpcSubnetArray{})
+	pulumi.RegisterOutputType(GatewaySNATSnatPolicyOutput{})
+	pulumi.RegisterOutputType(GatewaySNATSnatPolicyArrayOutput{})
+	pulumi.RegisterOutputType(TransitGatewayBgpLanInterfaceOutput{})
+	pulumi.RegisterOutputType(TransitGatewayBgpLanInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(TransitGatewayHaBgpLanInterfaceOutput{})
+	pulumi.RegisterOutputType(TransitGatewayHaBgpLanInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(VpcPrivateSubnetOutput{})
 	pulumi.RegisterOutputType(VpcPrivateSubnetArrayOutput{})
 	pulumi.RegisterOutputType(VpcPublicSubnetOutput{})

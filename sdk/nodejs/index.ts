@@ -6,7 +6,10 @@ import * as utilities from "./utilities";
 
 // Export members:
 export * from "./account";
+export * from "./gateway";
 export * from "./provider";
+export * from "./spokeGateway";
+export * from "./transitGateway";
 export * from "./vpc";
 
 // Export sub-modules:
@@ -20,6 +23,9 @@ export {
 
 // Import resources to register:
 import { Account } from "./account";
+import { Gateway } from "./gateway";
+import { SpokeGateway } from "./spokeGateway";
+import { TransitGateway } from "./transitGateway";
 import { Vpc } from "./vpc";
 
 const _module = {
@@ -28,6 +34,12 @@ const _module = {
         switch (type) {
             case "aviatrix:index/account:Account":
                 return new Account(name, <any>undefined, { urn })
+            case "aviatrix:index/gateway:Gateway":
+                return new Gateway(name, <any>undefined, { urn })
+            case "aviatrix:index/spokeGateway:SpokeGateway":
+                return new SpokeGateway(name, <any>undefined, { urn })
+            case "aviatrix:index/transitGateway:TransitGateway":
+                return new TransitGateway(name, <any>undefined, { urn })
             case "aviatrix:index/vpc:Vpc":
                 return new Vpc(name, <any>undefined, { urn })
             default:
@@ -36,6 +48,9 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("aviatrix", "index/account", _module)
+pulumi.runtime.registerResourceModule("aviatrix", "index/gateway", _module)
+pulumi.runtime.registerResourceModule("aviatrix", "index/spokeGateway", _module)
+pulumi.runtime.registerResourceModule("aviatrix", "index/transitGateway", _module)
 pulumi.runtime.registerResourceModule("aviatrix", "index/vpc", _module)
 
 import { Provider } from "./provider";

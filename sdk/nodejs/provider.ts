@@ -53,7 +53,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["controllerIp"] = args ? args.controllerIp : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["pathToCaCertificate"] = args ? args.pathToCaCertificate : undefined;
-            resourceInputs["skipVersionValidation"] = pulumi.output(args ? args.skipVersionValidation : undefined).apply(JSON.stringify);
+            resourceInputs["skipVersionValidation"] = pulumi.output((args ? args.skipVersionValidation : undefined) ?? true).apply(JSON.stringify);
             resourceInputs["username"] = args ? args.username : undefined;
             resourceInputs["verifySslCertificate"] = pulumi.output(args ? args.verifySslCertificate : undefined).apply(JSON.stringify);
         }

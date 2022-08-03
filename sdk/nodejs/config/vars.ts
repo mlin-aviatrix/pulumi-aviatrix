@@ -31,10 +31,10 @@ Object.defineProperty(exports, "pathToCaCertificate", {
     enumerable: true,
 });
 
-export declare const skipVersionValidation: boolean | undefined;
+export declare const skipVersionValidation: boolean;
 Object.defineProperty(exports, "skipVersionValidation", {
     get() {
-        return __config.getObject<boolean>("skipVersionValidation");
+        return __config.getObject<boolean>("skipVersionValidation") ?? true;
     },
     enumerable: true,
 });

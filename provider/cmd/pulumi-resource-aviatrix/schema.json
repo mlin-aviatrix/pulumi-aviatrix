@@ -43,6 +43,157 @@
         ]
     },
     "types": {
+        "aviatrix:index/GatewaySNATSnatPolicy:GatewaySNATSnatPolicy": {
+            "properties": {
+                "applyRouteEntry": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "connection": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dstCidr": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dstPort": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeRtb": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "interface": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mark": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "protocol": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "snatIps": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "snatPort": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "srcCidr": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "srcPort": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aviatrix:index/TransitGatewayBgpLanInterface:TransitGatewayBgpLanInterface": {
+            "properties": {
+                "subnet": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vpcId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "subnet",
+                "vpcId"
+            ]
+        },
+        "aviatrix:index/TransitGatewayHaBgpLanInterface:TransitGatewayHaBgpLanInterface": {
+            "properties": {
+                "subnet": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vpcId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "subnet",
+                "vpcId"
+            ]
+        },
         "aviatrix:index/VpcPrivateSubnet:VpcPrivateSubnet": {
             "properties": {
                 "cidr": {
@@ -2112,6 +2263,2206 @@
                     "zone": {
                         "type": "string",
                         "description": "Availability Zone. Only available for Azure and Public Subnet Filtering gateway\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aviatrix:index/gatewaySNAT:GatewaySNAT": {
+            "properties": {
+                "gwName": {
+                    "type": "string",
+                    "description": "Name of the gateway.\n"
+                },
+                "snatMode": {
+                    "type": "string",
+                    "description": "Nat mode. Currently only supports 'customized_snat'.\n"
+                },
+                "snatPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aviatrix:index/GatewaySNATSnatPolicy:GatewaySNATSnatPolicy"
+                    },
+                    "description": "Policy rules applied for 'snat_mode'' of 'customized_snat'.'\n"
+                },
+                "syncToHa": {
+                    "type": "boolean",
+                    "description": "Whether to sync the policies to the HA gateway.\n"
+                }
+            },
+            "required": [
+                "gwName"
+            ],
+            "inputProperties": {
+                "gwName": {
+                    "type": "string",
+                    "description": "Name of the gateway.\n"
+                },
+                "snatMode": {
+                    "type": "string",
+                    "description": "Nat mode. Currently only supports 'customized_snat'.\n"
+                },
+                "snatPolicies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aviatrix:index/GatewaySNATSnatPolicy:GatewaySNATSnatPolicy"
+                    },
+                    "description": "Policy rules applied for 'snat_mode'' of 'customized_snat'.'\n"
+                },
+                "syncToHa": {
+                    "type": "boolean",
+                    "description": "Whether to sync the policies to the HA gateway.\n"
+                }
+            },
+            "requiredInputs": [
+                "gwName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GatewaySNAT resources.\n",
+                "properties": {
+                    "gwName": {
+                        "type": "string",
+                        "description": "Name of the gateway.\n"
+                    },
+                    "snatMode": {
+                        "type": "string",
+                        "description": "Nat mode. Currently only supports 'customized_snat'.\n"
+                    },
+                    "snatPolicies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aviatrix:index/GatewaySNATSnatPolicy:GatewaySNATSnatPolicy"
+                        },
+                        "description": "Policy rules applied for 'snat_mode'' of 'customized_snat'.'\n"
+                    },
+                    "syncToHa": {
+                        "type": "boolean",
+                        "description": "Whether to sync the policies to the HA gateway.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aviatrix:index/spokeGateway:SpokeGateway": {
+            "properties": {
+                "accountName": {
+                    "type": "string",
+                    "description": "This parameter represents the name of a Cloud-Account in Aviatrix controller.\n"
+                },
+                "allocateNewEip": {
+                    "type": "boolean",
+                    "description": "If false, reuse an idle address in Elastic IP pool for this gateway. Otherwise, allocate a new Elastic IP and use it for\nthis gateway.\n"
+                },
+                "approvedLearnedCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Approved learned CIDRs for BGP Spoke Gateway. Available as of provider version R2.21+.\n"
+                },
+                "availabilityDomain": {
+                    "type": "string",
+                    "description": "Availability domain for OCI.\n"
+                },
+                "azureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to this Spoke Gateway.\n"
+                },
+                "bgpEcmp": {
+                    "type": "boolean",
+                    "description": "Enable Equal Cost Multi Path (ECMP) routing for the next hop for BGP Spoke Gateway.\n"
+                },
+                "bgpHoldTime": {
+                    "type": "integer",
+                    "description": "BGP Hold Time for BGP Spoke Gateway. Unit is in seconds. Valid values are between 12 and 360.\n"
+                },
+                "bgpPollingTime": {
+                    "type": "integer",
+                    "description": "BGP route polling time for BGP Spoke Gateway. Unit is in seconds. Valid values are between 10 and 50.\n"
+                },
+                "cloudInstanceId": {
+                    "type": "string",
+                    "description": "Cloud instance ID.\n"
+                },
+                "cloudType": {
+                    "type": "integer",
+                    "description": "Type of cloud service provider.\n"
+                },
+                "customerManagedKeys": {
+                    "type": "string",
+                    "description": "Customer managed key ID.\n"
+                },
+                "customizedSpokeVpcRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be customized for the spoke VPC routes. When configured, it will replace all learned\nroutes in VPC routing tables, including RFC1918 and non-RFC1918 CIDRs. It applies to this spoke gateway only.\n"
+                },
+                "disableRoutePropagation": {
+                    "type": "boolean",
+                    "description": "Disables route propagation on BGP Spoke to attached Transit Gateway. Default: false.\n"
+                },
+                "eip": {
+                    "type": "string",
+                    "description": "Required when allocate_new_eip is false. It uses specified EIP for this gateway.\n"
+                },
+                "enableActiveStandby": {
+                    "type": "boolean",
+                    "description": "Enables Active-Standby Mode, available only with HA enabled for BGP Spoke Gateway.\n"
+                },
+                "enableActiveStandbyPreemptive": {
+                    "type": "boolean",
+                    "description": "Enables Preemptive Mode for Active-Standby, available only with Active-Standby enabled.\n"
+                },
+                "enableAutoAdvertiseS2cCidrs": {
+                    "type": "boolean",
+                    "description": "Automatically advertise remote CIDR to Aviatrix Transit Gateway when route based Site2Cloud Tunnel is created.\n"
+                },
+                "enableBgp": {
+                    "type": "boolean",
+                    "description": "Enable BGP. Default: false.\n"
+                },
+                "enableEncryptVolume": {
+                    "type": "boolean",
+                    "description": "Enable encrypt gateway EBS volume. Only supported for AWS provider. Valid values: true, false. Default value: false.\n"
+                },
+                "enableJumboFrame": {
+                    "type": "boolean",
+                    "description": "Enable jumbo frame support for spoke gateway. Valid values: true or false. Default value: true.\n"
+                },
+                "enableLearnedCidrsApproval": {
+                    "type": "boolean",
+                    "description": "Switch to enable/disable learned CIDR approval for BGP Spoke Gateway. Valid values: true, false.\n"
+                },
+                "enableMonitorGatewaySubnets": {
+                    "type": "boolean",
+                    "description": "Enable [monitor gateway subnets](https://docs.aviatrix.com/HowTos/gateway.html#monitor-gateway-subnet). Only valid for\ncloud_type = 1 (AWS) or 256 (AWSGov). Valid values: true, false. Default value: false.\n"
+                },
+                "enablePrivateOob": {
+                    "type": "boolean",
+                    "description": "Enable private OOB.\n"
+                },
+                "enablePrivateVpcDefaultRoute": {
+                    "type": "boolean",
+                    "description": "Config Private VPC Default Route.\n"
+                },
+                "enableSkipPublicRouteTableUpdate": {
+                    "type": "boolean",
+                    "description": "Skip Public Route Table Update.\n"
+                },
+                "enableSpotInstance": {
+                    "type": "boolean",
+                    "description": "Enable spot instance. NOT supported for production deployment.\n"
+                },
+                "enableVpcDnsServer": {
+                    "type": "boolean",
+                    "description": "Enable vpc_dns_server for Gateway. Valid values: true, false.\n"
+                },
+                "faultDomain": {
+                    "type": "string",
+                    "description": "Fault domain for OCI.\n"
+                },
+                "filteredSpokeVpcRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be filtered from the spoke VPC route table. When configured, filtering CIDR(s) or\nit’s subnet will be deleted from VPC routing tables as well as from spoke gateway’s routing table. It applies to\nthis spoke gateway only.\n"
+                },
+                "gwName": {
+                    "type": "string",
+                    "description": "Name of the gateway which is going to be created.\n"
+                },
+                "gwSize": {
+                    "type": "string",
+                    "description": "Size of the gateway instance.\n"
+                },
+                "haAvailabilityDomain": {
+                    "type": "string",
+                    "description": "HA availability domain for OCI.\n"
+                },
+                "haAzureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to the HA Spoke Gateway.\n"
+                },
+                "haCloudInstanceId": {
+                    "type": "string",
+                    "description": "Cloud instance ID of HA spoke gateway.\n"
+                },
+                "haEip": {
+                    "type": "string",
+                    "description": "Public IP address that you want assigned to the HA Spoke Gateway.\n"
+                },
+                "haFaultDomain": {
+                    "type": "string",
+                    "description": "HA fault domain for OCI.\n"
+                },
+                "haGwName": {
+                    "type": "string",
+                    "description": "Aviatrix spoke gateway unique name of HA spoke gateway.\n"
+                },
+                "haGwSize": {
+                    "type": "string",
+                    "description": "HA Gateway Size.\n"
+                },
+                "haImageVersion": {
+                    "type": "string",
+                    "description": "ha_image_version can be used to set the desired image version of the HA gateway. If set, we will attempt to update the\ngateway to the specified version.\n"
+                },
+                "haInsaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Spoke HA Gateway. Required for AWS if insane_mode is true and ha_subnet is\nset.\n"
+                },
+                "haOobAvailabilityZone": {
+                    "type": "string",
+                    "description": "OOB HA availability zone.\n"
+                },
+                "haOobManagementSubnet": {
+                    "type": "string",
+                    "description": "OOB HA management subnet.\n"
+                },
+                "haPrivateIp": {
+                    "type": "string",
+                    "description": "Private IP address of the spoke gateway created.\n"
+                },
+                "haSecurityGroupId": {
+                    "type": "string",
+                    "description": "HA security group used for the spoke gateway.\n"
+                },
+                "haSoftwareVersion": {
+                    "type": "string",
+                    "description": "ha_software_version can be used to set the desired software version of the HA gateway. If set, we will attempt to update\nthe gateway to the specified version. If left blank, the gateway software version will continue to be managed through\nthe aviatrix_controller_config resource.\n"
+                },
+                "haSubnet": {
+                    "type": "string",
+                    "description": "HA Subnet. Required if enabling HA for AWS/AWSGov/AWSChina/Azure/AzureChina/OCI/Alibaba Cloud. Optional if enabling HA\nfor GCP.\n"
+                },
+                "haZone": {
+                    "type": "string",
+                    "description": "HA Zone. Required if enabling HA for GCP. Optional for Azure.\n"
+                },
+                "imageVersion": {
+                    "type": "string",
+                    "description": "image_version can be used to set the desired image version of the gateway. If set, we will attempt to update the gateway\nto the specified version.\n"
+                },
+                "includedAdvertisedSpokeRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be advertised to on-prem as 'Included CIDR List'. When configured, it will replace\nall advertised routes from this VPC.\n"
+                },
+                "insaneMode": {
+                    "type": "boolean",
+                    "description": "Enable Insane Mode for Spoke Gateway. Valid values: true, false. Supported for AWS/AWSGov, GCP, Azure and OCI. If insane\nmode is enabled, gateway size has to at least be c5 size for AWS and Standard_D3_v2 size for Azure.\n"
+                },
+                "insaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Spoke Gateway. Required if insane_mode is enabled for AWS cloud.\n"
+                },
+                "learnedCidrsApprovalMode": {
+                    "type": "string",
+                    "description": "Set the learned CIDRs approval mode for BGP Spoke Gateway. Only valid when 'enable_learned_cidrs_approval' is set to\ntrue. Currently, only 'gateway' is supported: learned CIDR approval applies to ALL connections. Default value:\n'gateway'.\n"
+                },
+                "localAsNumber": {
+                    "type": "string",
+                    "description": "Changes the Aviatrix BGP Spoke Gateway ASN number before you setup Aviatrix BGP Spoke Gateway connection configurations.\n"
+                },
+                "manageTransitGatewayAttachment": {
+                    "type": "boolean",
+                    "description": "This parameter is a switch used to determine whether or not to manage attaching this spoke gateway to transit gateways\nusing the aviatrix_spoke_gateway resource. If this is set to false, attaching this spoke gateway to transit gateways\nmust be done using the aviatrix_spoke_transit_attachment resource. Valid values: true, false. Default value: true.\n"
+                },
+                "monitorExcludeLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true.\n"
+                },
+                "oobAvailabilityZone": {
+                    "type": "string",
+                    "description": "OOB subnet availability zone.\n"
+                },
+                "oobManagementSubnet": {
+                    "type": "string",
+                    "description": "OOB management subnet.\n"
+                },
+                "prependAsPaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of AS numbers to populate BGP AP_PATH field when it advertises to VGW or peer devices. Only valid for BGP Spoke\nGateway\n"
+                },
+                "privateIp": {
+                    "type": "string",
+                    "description": "Private IP address of the spoke gateway created.\n"
+                },
+                "rxQueueSize": {
+                    "type": "string",
+                    "description": "Gateway ethernet interface RX queue size. Supported for AWS related clouds only.\n"
+                },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "Security group used for the spoke gateway.\n"
+                },
+                "singleAzHa": {
+                    "type": "boolean",
+                    "description": "Set to 'enabled' if this feature is desired.\n"
+                },
+                "singleIpSnat": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable Source NAT feature in 'single_ip' mode on the gateway or not.\n"
+                },
+                "softwareVersion": {
+                    "type": "string",
+                    "description": "software_version can be used to set the desired software version of the gateway. If set, we will attempt to update the\ngateway to the specified version. If left blank, the gateway software version will continue to be managed through the\naviatrix_controller_config resource.\n"
+                },
+                "spokeBgpManualAdvertiseCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Intended CIDR list to be advertised to external BGP router.\n"
+                },
+                "spotPrice": {
+                    "type": "string",
+                    "description": "Price for spot instance. NOT supported for production deployment.\n"
+                },
+                "subnet": {
+                    "type": "string",
+                    "description": "Public Subnet Info.\n"
+                },
+                "tagLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Instance tag of cloud provider.\n",
+                    "deprecationMessage": "Use tags instead."
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of tags to assign to the spoke gateway.\n"
+                },
+                "transitGw": {
+                    "type": "string",
+                    "description": "Specify the transit Gateways to attach to this spoke. Format is a comma-separated list of transit gateway names. For\nexample, 'transit-gw1,transit-gw2'.\n",
+                    "deprecationMessage": "Please set `manage_transit_gateway_attachment` to false, and use the standalone aviatrix_spoke_transit_attachment resource instead."
+                },
+                "tunnelDetectionTime": {
+                    "type": "integer",
+                    "description": "The IPSec tunnel down detection time for the Spoke Gateway.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "VPC-ID/VNet-Name of cloud provider.\n"
+                },
+                "vpcReg": {
+                    "type": "string",
+                    "description": "Region of cloud provider.\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "Availability Zone. Only available for cloud_type = 8 (Azure). Must be in the form 'az-n', for example, 'az-2'.\n"
+                }
+            },
+            "required": [
+                "accountName",
+                "availabilityDomain",
+                "azureEipNameResourceGroup",
+                "cloudInstanceId",
+                "cloudType",
+                "eip",
+                "faultDomain",
+                "gwName",
+                "gwSize",
+                "haAvailabilityDomain",
+                "haAzureEipNameResourceGroup",
+                "haCloudInstanceId",
+                "haEip",
+                "haFaultDomain",
+                "haGwName",
+                "haImageVersion",
+                "haPrivateIp",
+                "haSecurityGroupId",
+                "haSoftwareVersion",
+                "imageVersion",
+                "localAsNumber",
+                "privateIp",
+                "securityGroupId",
+                "softwareVersion",
+                "subnet",
+                "tunnelDetectionTime",
+                "vpcId",
+                "vpcReg"
+            ],
+            "inputProperties": {
+                "accountName": {
+                    "type": "string",
+                    "description": "This parameter represents the name of a Cloud-Account in Aviatrix controller.\n"
+                },
+                "allocateNewEip": {
+                    "type": "boolean",
+                    "description": "If false, reuse an idle address in Elastic IP pool for this gateway. Otherwise, allocate a new Elastic IP and use it for\nthis gateway.\n"
+                },
+                "approvedLearnedCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Approved learned CIDRs for BGP Spoke Gateway. Available as of provider version R2.21+.\n"
+                },
+                "availabilityDomain": {
+                    "type": "string",
+                    "description": "Availability domain for OCI.\n"
+                },
+                "azureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to this Spoke Gateway.\n"
+                },
+                "bgpEcmp": {
+                    "type": "boolean",
+                    "description": "Enable Equal Cost Multi Path (ECMP) routing for the next hop for BGP Spoke Gateway.\n"
+                },
+                "bgpHoldTime": {
+                    "type": "integer",
+                    "description": "BGP Hold Time for BGP Spoke Gateway. Unit is in seconds. Valid values are between 12 and 360.\n"
+                },
+                "bgpPollingTime": {
+                    "type": "integer",
+                    "description": "BGP route polling time for BGP Spoke Gateway. Unit is in seconds. Valid values are between 10 and 50.\n"
+                },
+                "cloudType": {
+                    "type": "integer",
+                    "description": "Type of cloud service provider.\n"
+                },
+                "customerManagedKeys": {
+                    "type": "string",
+                    "description": "Customer managed key ID.\n"
+                },
+                "customizedSpokeVpcRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be customized for the spoke VPC routes. When configured, it will replace all learned\nroutes in VPC routing tables, including RFC1918 and non-RFC1918 CIDRs. It applies to this spoke gateway only.\n"
+                },
+                "disableRoutePropagation": {
+                    "type": "boolean",
+                    "description": "Disables route propagation on BGP Spoke to attached Transit Gateway. Default: false.\n"
+                },
+                "eip": {
+                    "type": "string",
+                    "description": "Required when allocate_new_eip is false. It uses specified EIP for this gateway.\n"
+                },
+                "enableActiveStandby": {
+                    "type": "boolean",
+                    "description": "Enables Active-Standby Mode, available only with HA enabled for BGP Spoke Gateway.\n"
+                },
+                "enableActiveStandbyPreemptive": {
+                    "type": "boolean",
+                    "description": "Enables Preemptive Mode for Active-Standby, available only with Active-Standby enabled.\n"
+                },
+                "enableAutoAdvertiseS2cCidrs": {
+                    "type": "boolean",
+                    "description": "Automatically advertise remote CIDR to Aviatrix Transit Gateway when route based Site2Cloud Tunnel is created.\n"
+                },
+                "enableBgp": {
+                    "type": "boolean",
+                    "description": "Enable BGP. Default: false.\n"
+                },
+                "enableEncryptVolume": {
+                    "type": "boolean",
+                    "description": "Enable encrypt gateway EBS volume. Only supported for AWS provider. Valid values: true, false. Default value: false.\n"
+                },
+                "enableJumboFrame": {
+                    "type": "boolean",
+                    "description": "Enable jumbo frame support for spoke gateway. Valid values: true or false. Default value: true.\n"
+                },
+                "enableLearnedCidrsApproval": {
+                    "type": "boolean",
+                    "description": "Switch to enable/disable learned CIDR approval for BGP Spoke Gateway. Valid values: true, false.\n"
+                },
+                "enableMonitorGatewaySubnets": {
+                    "type": "boolean",
+                    "description": "Enable [monitor gateway subnets](https://docs.aviatrix.com/HowTos/gateway.html#monitor-gateway-subnet). Only valid for\ncloud_type = 1 (AWS) or 256 (AWSGov). Valid values: true, false. Default value: false.\n"
+                },
+                "enablePrivateOob": {
+                    "type": "boolean",
+                    "description": "Enable private OOB.\n"
+                },
+                "enablePrivateVpcDefaultRoute": {
+                    "type": "boolean",
+                    "description": "Config Private VPC Default Route.\n"
+                },
+                "enableSkipPublicRouteTableUpdate": {
+                    "type": "boolean",
+                    "description": "Skip Public Route Table Update.\n"
+                },
+                "enableSpotInstance": {
+                    "type": "boolean",
+                    "description": "Enable spot instance. NOT supported for production deployment.\n"
+                },
+                "enableVpcDnsServer": {
+                    "type": "boolean",
+                    "description": "Enable vpc_dns_server for Gateway. Valid values: true, false.\n"
+                },
+                "faultDomain": {
+                    "type": "string",
+                    "description": "Fault domain for OCI.\n"
+                },
+                "filteredSpokeVpcRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be filtered from the spoke VPC route table. When configured, filtering CIDR(s) or\nit’s subnet will be deleted from VPC routing tables as well as from spoke gateway’s routing table. It applies to\nthis spoke gateway only.\n"
+                },
+                "gwName": {
+                    "type": "string",
+                    "description": "Name of the gateway which is going to be created.\n"
+                },
+                "gwSize": {
+                    "type": "string",
+                    "description": "Size of the gateway instance.\n"
+                },
+                "haAvailabilityDomain": {
+                    "type": "string",
+                    "description": "HA availability domain for OCI.\n"
+                },
+                "haAzureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to the HA Spoke Gateway.\n"
+                },
+                "haEip": {
+                    "type": "string",
+                    "description": "Public IP address that you want assigned to the HA Spoke Gateway.\n"
+                },
+                "haFaultDomain": {
+                    "type": "string",
+                    "description": "HA fault domain for OCI.\n"
+                },
+                "haGwSize": {
+                    "type": "string",
+                    "description": "HA Gateway Size.\n"
+                },
+                "haImageVersion": {
+                    "type": "string",
+                    "description": "ha_image_version can be used to set the desired image version of the HA gateway. If set, we will attempt to update the\ngateway to the specified version.\n"
+                },
+                "haInsaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Spoke HA Gateway. Required for AWS if insane_mode is true and ha_subnet is\nset.\n"
+                },
+                "haOobAvailabilityZone": {
+                    "type": "string",
+                    "description": "OOB HA availability zone.\n"
+                },
+                "haOobManagementSubnet": {
+                    "type": "string",
+                    "description": "OOB HA management subnet.\n"
+                },
+                "haSoftwareVersion": {
+                    "type": "string",
+                    "description": "ha_software_version can be used to set the desired software version of the HA gateway. If set, we will attempt to update\nthe gateway to the specified version. If left blank, the gateway software version will continue to be managed through\nthe aviatrix_controller_config resource.\n"
+                },
+                "haSubnet": {
+                    "type": "string",
+                    "description": "HA Subnet. Required if enabling HA for AWS/AWSGov/AWSChina/Azure/AzureChina/OCI/Alibaba Cloud. Optional if enabling HA\nfor GCP.\n"
+                },
+                "haZone": {
+                    "type": "string",
+                    "description": "HA Zone. Required if enabling HA for GCP. Optional for Azure.\n"
+                },
+                "imageVersion": {
+                    "type": "string",
+                    "description": "image_version can be used to set the desired image version of the gateway. If set, we will attempt to update the gateway\nto the specified version.\n"
+                },
+                "includedAdvertisedSpokeRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be advertised to on-prem as 'Included CIDR List'. When configured, it will replace\nall advertised routes from this VPC.\n"
+                },
+                "insaneMode": {
+                    "type": "boolean",
+                    "description": "Enable Insane Mode for Spoke Gateway. Valid values: true, false. Supported for AWS/AWSGov, GCP, Azure and OCI. If insane\nmode is enabled, gateway size has to at least be c5 size for AWS and Standard_D3_v2 size for Azure.\n"
+                },
+                "insaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Spoke Gateway. Required if insane_mode is enabled for AWS cloud.\n"
+                },
+                "learnedCidrsApprovalMode": {
+                    "type": "string",
+                    "description": "Set the learned CIDRs approval mode for BGP Spoke Gateway. Only valid when 'enable_learned_cidrs_approval' is set to\ntrue. Currently, only 'gateway' is supported: learned CIDR approval applies to ALL connections. Default value:\n'gateway'.\n"
+                },
+                "localAsNumber": {
+                    "type": "string",
+                    "description": "Changes the Aviatrix BGP Spoke Gateway ASN number before you setup Aviatrix BGP Spoke Gateway connection configurations.\n"
+                },
+                "manageTransitGatewayAttachment": {
+                    "type": "boolean",
+                    "description": "This parameter is a switch used to determine whether or not to manage attaching this spoke gateway to transit gateways\nusing the aviatrix_spoke_gateway resource. If this is set to false, attaching this spoke gateway to transit gateways\nmust be done using the aviatrix_spoke_transit_attachment resource. Valid values: true, false. Default value: true.\n"
+                },
+                "monitorExcludeLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true.\n"
+                },
+                "oobAvailabilityZone": {
+                    "type": "string",
+                    "description": "OOB subnet availability zone.\n"
+                },
+                "oobManagementSubnet": {
+                    "type": "string",
+                    "description": "OOB management subnet.\n"
+                },
+                "prependAsPaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of AS numbers to populate BGP AP_PATH field when it advertises to VGW or peer devices. Only valid for BGP Spoke\nGateway\n"
+                },
+                "rxQueueSize": {
+                    "type": "string",
+                    "description": "Gateway ethernet interface RX queue size. Supported for AWS related clouds only.\n"
+                },
+                "singleAzHa": {
+                    "type": "boolean",
+                    "description": "Set to 'enabled' if this feature is desired.\n"
+                },
+                "singleIpSnat": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable Source NAT feature in 'single_ip' mode on the gateway or not.\n"
+                },
+                "softwareVersion": {
+                    "type": "string",
+                    "description": "software_version can be used to set the desired software version of the gateway. If set, we will attempt to update the\ngateway to the specified version. If left blank, the gateway software version will continue to be managed through the\naviatrix_controller_config resource.\n"
+                },
+                "spokeBgpManualAdvertiseCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Intended CIDR list to be advertised to external BGP router.\n"
+                },
+                "spotPrice": {
+                    "type": "string",
+                    "description": "Price for spot instance. NOT supported for production deployment.\n"
+                },
+                "subnet": {
+                    "type": "string",
+                    "description": "Public Subnet Info.\n"
+                },
+                "tagLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Instance tag of cloud provider.\n",
+                    "deprecationMessage": "Use tags instead."
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of tags to assign to the spoke gateway.\n"
+                },
+                "transitGw": {
+                    "type": "string",
+                    "description": "Specify the transit Gateways to attach to this spoke. Format is a comma-separated list of transit gateway names. For\nexample, 'transit-gw1,transit-gw2'.\n",
+                    "deprecationMessage": "Please set `manage_transit_gateway_attachment` to false, and use the standalone aviatrix_spoke_transit_attachment resource instead."
+                },
+                "tunnelDetectionTime": {
+                    "type": "integer",
+                    "description": "The IPSec tunnel down detection time for the Spoke Gateway.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "VPC-ID/VNet-Name of cloud provider.\n"
+                },
+                "vpcReg": {
+                    "type": "string",
+                    "description": "Region of cloud provider.\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "Availability Zone. Only available for cloud_type = 8 (Azure). Must be in the form 'az-n', for example, 'az-2'.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountName",
+                "cloudType",
+                "gwName",
+                "gwSize",
+                "subnet",
+                "vpcId",
+                "vpcReg"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SpokeGateway resources.\n",
+                "properties": {
+                    "accountName": {
+                        "type": "string",
+                        "description": "This parameter represents the name of a Cloud-Account in Aviatrix controller.\n"
+                    },
+                    "allocateNewEip": {
+                        "type": "boolean",
+                        "description": "If false, reuse an idle address in Elastic IP pool for this gateway. Otherwise, allocate a new Elastic IP and use it for\nthis gateway.\n"
+                    },
+                    "approvedLearnedCidrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Approved learned CIDRs for BGP Spoke Gateway. Available as of provider version R2.21+.\n"
+                    },
+                    "availabilityDomain": {
+                        "type": "string",
+                        "description": "Availability domain for OCI.\n"
+                    },
+                    "azureEipNameResourceGroup": {
+                        "type": "string",
+                        "description": "The name of the public IP address and its resource group in Azure to assign to this Spoke Gateway.\n"
+                    },
+                    "bgpEcmp": {
+                        "type": "boolean",
+                        "description": "Enable Equal Cost Multi Path (ECMP) routing for the next hop for BGP Spoke Gateway.\n"
+                    },
+                    "bgpHoldTime": {
+                        "type": "integer",
+                        "description": "BGP Hold Time for BGP Spoke Gateway. Unit is in seconds. Valid values are between 12 and 360.\n"
+                    },
+                    "bgpPollingTime": {
+                        "type": "integer",
+                        "description": "BGP route polling time for BGP Spoke Gateway. Unit is in seconds. Valid values are between 10 and 50.\n"
+                    },
+                    "cloudInstanceId": {
+                        "type": "string",
+                        "description": "Cloud instance ID.\n"
+                    },
+                    "cloudType": {
+                        "type": "integer",
+                        "description": "Type of cloud service provider.\n"
+                    },
+                    "customerManagedKeys": {
+                        "type": "string",
+                        "description": "Customer managed key ID.\n"
+                    },
+                    "customizedSpokeVpcRoutes": {
+                        "type": "string",
+                        "description": "A list of comma separated CIDRs to be customized for the spoke VPC routes. When configured, it will replace all learned\nroutes in VPC routing tables, including RFC1918 and non-RFC1918 CIDRs. It applies to this spoke gateway only.\n"
+                    },
+                    "disableRoutePropagation": {
+                        "type": "boolean",
+                        "description": "Disables route propagation on BGP Spoke to attached Transit Gateway. Default: false.\n"
+                    },
+                    "eip": {
+                        "type": "string",
+                        "description": "Required when allocate_new_eip is false. It uses specified EIP for this gateway.\n"
+                    },
+                    "enableActiveStandby": {
+                        "type": "boolean",
+                        "description": "Enables Active-Standby Mode, available only with HA enabled for BGP Spoke Gateway.\n"
+                    },
+                    "enableActiveStandbyPreemptive": {
+                        "type": "boolean",
+                        "description": "Enables Preemptive Mode for Active-Standby, available only with Active-Standby enabled.\n"
+                    },
+                    "enableAutoAdvertiseS2cCidrs": {
+                        "type": "boolean",
+                        "description": "Automatically advertise remote CIDR to Aviatrix Transit Gateway when route based Site2Cloud Tunnel is created.\n"
+                    },
+                    "enableBgp": {
+                        "type": "boolean",
+                        "description": "Enable BGP. Default: false.\n"
+                    },
+                    "enableEncryptVolume": {
+                        "type": "boolean",
+                        "description": "Enable encrypt gateway EBS volume. Only supported for AWS provider. Valid values: true, false. Default value: false.\n"
+                    },
+                    "enableJumboFrame": {
+                        "type": "boolean",
+                        "description": "Enable jumbo frame support for spoke gateway. Valid values: true or false. Default value: true.\n"
+                    },
+                    "enableLearnedCidrsApproval": {
+                        "type": "boolean",
+                        "description": "Switch to enable/disable learned CIDR approval for BGP Spoke Gateway. Valid values: true, false.\n"
+                    },
+                    "enableMonitorGatewaySubnets": {
+                        "type": "boolean",
+                        "description": "Enable [monitor gateway subnets](https://docs.aviatrix.com/HowTos/gateway.html#monitor-gateway-subnet). Only valid for\ncloud_type = 1 (AWS) or 256 (AWSGov). Valid values: true, false. Default value: false.\n"
+                    },
+                    "enablePrivateOob": {
+                        "type": "boolean",
+                        "description": "Enable private OOB.\n"
+                    },
+                    "enablePrivateVpcDefaultRoute": {
+                        "type": "boolean",
+                        "description": "Config Private VPC Default Route.\n"
+                    },
+                    "enableSkipPublicRouteTableUpdate": {
+                        "type": "boolean",
+                        "description": "Skip Public Route Table Update.\n"
+                    },
+                    "enableSpotInstance": {
+                        "type": "boolean",
+                        "description": "Enable spot instance. NOT supported for production deployment.\n"
+                    },
+                    "enableVpcDnsServer": {
+                        "type": "boolean",
+                        "description": "Enable vpc_dns_server for Gateway. Valid values: true, false.\n"
+                    },
+                    "faultDomain": {
+                        "type": "string",
+                        "description": "Fault domain for OCI.\n"
+                    },
+                    "filteredSpokeVpcRoutes": {
+                        "type": "string",
+                        "description": "A list of comma separated CIDRs to be filtered from the spoke VPC route table. When configured, filtering CIDR(s) or\nit’s subnet will be deleted from VPC routing tables as well as from spoke gateway’s routing table. It applies to\nthis spoke gateway only.\n"
+                    },
+                    "gwName": {
+                        "type": "string",
+                        "description": "Name of the gateway which is going to be created.\n"
+                    },
+                    "gwSize": {
+                        "type": "string",
+                        "description": "Size of the gateway instance.\n"
+                    },
+                    "haAvailabilityDomain": {
+                        "type": "string",
+                        "description": "HA availability domain for OCI.\n"
+                    },
+                    "haAzureEipNameResourceGroup": {
+                        "type": "string",
+                        "description": "The name of the public IP address and its resource group in Azure to assign to the HA Spoke Gateway.\n"
+                    },
+                    "haCloudInstanceId": {
+                        "type": "string",
+                        "description": "Cloud instance ID of HA spoke gateway.\n"
+                    },
+                    "haEip": {
+                        "type": "string",
+                        "description": "Public IP address that you want assigned to the HA Spoke Gateway.\n"
+                    },
+                    "haFaultDomain": {
+                        "type": "string",
+                        "description": "HA fault domain for OCI.\n"
+                    },
+                    "haGwName": {
+                        "type": "string",
+                        "description": "Aviatrix spoke gateway unique name of HA spoke gateway.\n"
+                    },
+                    "haGwSize": {
+                        "type": "string",
+                        "description": "HA Gateway Size.\n"
+                    },
+                    "haImageVersion": {
+                        "type": "string",
+                        "description": "ha_image_version can be used to set the desired image version of the HA gateway. If set, we will attempt to update the\ngateway to the specified version.\n"
+                    },
+                    "haInsaneModeAz": {
+                        "type": "string",
+                        "description": "AZ of subnet being created for Insane Mode Spoke HA Gateway. Required for AWS if insane_mode is true and ha_subnet is\nset.\n"
+                    },
+                    "haOobAvailabilityZone": {
+                        "type": "string",
+                        "description": "OOB HA availability zone.\n"
+                    },
+                    "haOobManagementSubnet": {
+                        "type": "string",
+                        "description": "OOB HA management subnet.\n"
+                    },
+                    "haPrivateIp": {
+                        "type": "string",
+                        "description": "Private IP address of the spoke gateway created.\n"
+                    },
+                    "haSecurityGroupId": {
+                        "type": "string",
+                        "description": "HA security group used for the spoke gateway.\n"
+                    },
+                    "haSoftwareVersion": {
+                        "type": "string",
+                        "description": "ha_software_version can be used to set the desired software version of the HA gateway. If set, we will attempt to update\nthe gateway to the specified version. If left blank, the gateway software version will continue to be managed through\nthe aviatrix_controller_config resource.\n"
+                    },
+                    "haSubnet": {
+                        "type": "string",
+                        "description": "HA Subnet. Required if enabling HA for AWS/AWSGov/AWSChina/Azure/AzureChina/OCI/Alibaba Cloud. Optional if enabling HA\nfor GCP.\n"
+                    },
+                    "haZone": {
+                        "type": "string",
+                        "description": "HA Zone. Required if enabling HA for GCP. Optional for Azure.\n"
+                    },
+                    "imageVersion": {
+                        "type": "string",
+                        "description": "image_version can be used to set the desired image version of the gateway. If set, we will attempt to update the gateway\nto the specified version.\n"
+                    },
+                    "includedAdvertisedSpokeRoutes": {
+                        "type": "string",
+                        "description": "A list of comma separated CIDRs to be advertised to on-prem as 'Included CIDR List'. When configured, it will replace\nall advertised routes from this VPC.\n"
+                    },
+                    "insaneMode": {
+                        "type": "boolean",
+                        "description": "Enable Insane Mode for Spoke Gateway. Valid values: true, false. Supported for AWS/AWSGov, GCP, Azure and OCI. If insane\nmode is enabled, gateway size has to at least be c5 size for AWS and Standard_D3_v2 size for Azure.\n"
+                    },
+                    "insaneModeAz": {
+                        "type": "string",
+                        "description": "AZ of subnet being created for Insane Mode Spoke Gateway. Required if insane_mode is enabled for AWS cloud.\n"
+                    },
+                    "learnedCidrsApprovalMode": {
+                        "type": "string",
+                        "description": "Set the learned CIDRs approval mode for BGP Spoke Gateway. Only valid when 'enable_learned_cidrs_approval' is set to\ntrue. Currently, only 'gateway' is supported: learned CIDR approval applies to ALL connections. Default value:\n'gateway'.\n"
+                    },
+                    "localAsNumber": {
+                        "type": "string",
+                        "description": "Changes the Aviatrix BGP Spoke Gateway ASN number before you setup Aviatrix BGP Spoke Gateway connection configurations.\n"
+                    },
+                    "manageTransitGatewayAttachment": {
+                        "type": "boolean",
+                        "description": "This parameter is a switch used to determine whether or not to manage attaching this spoke gateway to transit gateways\nusing the aviatrix_spoke_gateway resource. If this is set to false, attaching this spoke gateway to transit gateways\nmust be done using the aviatrix_spoke_transit_attachment resource. Valid values: true, false. Default value: true.\n"
+                    },
+                    "monitorExcludeLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true.\n"
+                    },
+                    "oobAvailabilityZone": {
+                        "type": "string",
+                        "description": "OOB subnet availability zone.\n"
+                    },
+                    "oobManagementSubnet": {
+                        "type": "string",
+                        "description": "OOB management subnet.\n"
+                    },
+                    "prependAsPaths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of AS numbers to populate BGP AP_PATH field when it advertises to VGW or peer devices. Only valid for BGP Spoke\nGateway\n"
+                    },
+                    "privateIp": {
+                        "type": "string",
+                        "description": "Private IP address of the spoke gateway created.\n"
+                    },
+                    "rxQueueSize": {
+                        "type": "string",
+                        "description": "Gateway ethernet interface RX queue size. Supported for AWS related clouds only.\n"
+                    },
+                    "securityGroupId": {
+                        "type": "string",
+                        "description": "Security group used for the spoke gateway.\n"
+                    },
+                    "singleAzHa": {
+                        "type": "boolean",
+                        "description": "Set to 'enabled' if this feature is desired.\n"
+                    },
+                    "singleIpSnat": {
+                        "type": "boolean",
+                        "description": "Specify whether to enable Source NAT feature in 'single_ip' mode on the gateway or not.\n"
+                    },
+                    "softwareVersion": {
+                        "type": "string",
+                        "description": "software_version can be used to set the desired software version of the gateway. If set, we will attempt to update the\ngateway to the specified version. If left blank, the gateway software version will continue to be managed through the\naviatrix_controller_config resource.\n"
+                    },
+                    "spokeBgpManualAdvertiseCidrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Intended CIDR list to be advertised to external BGP router.\n"
+                    },
+                    "spotPrice": {
+                        "type": "string",
+                        "description": "Price for spot instance. NOT supported for production deployment.\n"
+                    },
+                    "subnet": {
+                        "type": "string",
+                        "description": "Public Subnet Info.\n"
+                    },
+                    "tagLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Instance tag of cloud provider.\n",
+                        "deprecationMessage": "Use tags instead."
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of tags to assign to the spoke gateway.\n"
+                    },
+                    "transitGw": {
+                        "type": "string",
+                        "description": "Specify the transit Gateways to attach to this spoke. Format is a comma-separated list of transit gateway names. For\nexample, 'transit-gw1,transit-gw2'.\n",
+                        "deprecationMessage": "Please set `manage_transit_gateway_attachment` to false, and use the standalone aviatrix_spoke_transit_attachment resource instead."
+                    },
+                    "tunnelDetectionTime": {
+                        "type": "integer",
+                        "description": "The IPSec tunnel down detection time for the Spoke Gateway.\n"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "VPC-ID/VNet-Name of cloud provider.\n"
+                    },
+                    "vpcReg": {
+                        "type": "string",
+                        "description": "Region of cloud provider.\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "Availability Zone. Only available for cloud_type = 8 (Azure). Must be in the form 'az-n', for example, 'az-2'.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aviatrix:index/transitGateway:TransitGateway": {
+            "properties": {
+                "accountName": {
+                    "type": "string",
+                    "description": "This parameter represents the name of a Cloud-Account in Aviatrix controller.\n"
+                },
+                "allocateNewEip": {
+                    "type": "boolean",
+                    "description": "If false, reuse an idle address in Elastic IP pool for this gateway. Otherwise, allocate a new Elastic IP and use it for\nthis gateway.\n"
+                },
+                "approvedLearnedCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Approved learned CIDRs. Available as of provider version R2.21+.\n"
+                },
+                "availabilityDomain": {
+                    "type": "string",
+                    "description": "Availability domain for OCI.\n"
+                },
+                "azureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to this Transit Gateway.\n"
+                },
+                "bgpEcmp": {
+                    "type": "boolean",
+                    "description": "Enable Equal Cost Multi Path (ECMP) routing for the next hop.\n"
+                },
+                "bgpHoldTime": {
+                    "type": "integer",
+                    "description": "BGP Hold Time.\n"
+                },
+                "bgpLanInterfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aviatrix:index/TransitGatewayBgpLanInterface:TransitGatewayBgpLanInterface"
+                    },
+                    "description": "Interfaces to run BGP protocol on top of the ethernet interface, to connect to the onprem/remote peer. Only available\nfor GCP Transit.\n"
+                },
+                "bgpLanIpLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of available BGP LAN interface IPs for transit external device connection creation. Only supports GCP. Available as\nof provider version R2.21.0+.\n"
+                },
+                "bgpManualSpokeAdvertiseCidrs": {
+                    "type": "string",
+                    "description": "Intended CIDR list to be advertised to external bgp router.\n"
+                },
+                "bgpPollingTime": {
+                    "type": "string",
+                    "description": "BGP route polling time. Unit is in seconds. Valid values are between 10 and 50.\n"
+                },
+                "cloudInstanceId": {
+                    "type": "string",
+                    "description": "Instance ID of the transit gateway.\n"
+                },
+                "cloudType": {
+                    "type": "integer",
+                    "description": "Type of cloud service provider, requires an integer value. Use 1 for AWS.\n"
+                },
+                "connectedTransit": {
+                    "type": "boolean",
+                    "description": "Specify Connected Transit status.\n"
+                },
+                "customerManagedKeys": {
+                    "type": "string",
+                    "description": "Customer managed key ID.\n"
+                },
+                "customizedSpokeVpcRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be customized for the spoke VPC routes. When configured, it will replace all learned\nroutes in VPC routing tables, including RFC1918 and non-RFC1918 CIDRs. It applies to all spoke gateways attached to this\ntransit gateway.\n"
+                },
+                "customizedTransitVpcRoutes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of CIDRs to be customized for the transit VPC routes. When configured, it will replace all learned routes in VPC\nrouting tables, including RFC1918 and non-RFC1918 CIDRs.To be effective, `enable_advertise_transit_cidr` or firewall\nmanagement access for a transit firenet gateway must be enabled.\n"
+                },
+                "eip": {
+                    "type": "string",
+                    "description": "Required when allocate_new_eip is false. It uses specified EIP for this gateway.\n"
+                },
+                "enableActiveStandby": {
+                    "type": "boolean",
+                    "description": "Enables Active-Standby Mode, available only with HA enabled.\n"
+                },
+                "enableActiveStandbyPreemptive": {
+                    "type": "boolean",
+                    "description": "Enables Preemptive Mode for Active-Standby, available only with Active-Standby enabled.\n"
+                },
+                "enableAdvertiseTransitCidr": {
+                    "type": "boolean",
+                    "description": "Switch to Enable/Disable advertise transit VPC network CIDR.\n"
+                },
+                "enableBgpOverLan": {
+                    "type": "boolean",
+                    "description": "Pre-allocate a network interface(eth4) for \"BGP over LAN\" functionality. Only valid for cloud_type = 4 (GCP) and 8\n(Azure). Valid values: true or false. Default value: false. Available as of provider version R2.18+\n"
+                },
+                "enableEgressTransitFirenet": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable egress transit firenet interfaces or not.\n"
+                },
+                "enableEncryptVolume": {
+                    "type": "boolean",
+                    "description": "Enable encrypt gateway EBS volume. Only supported for AWS and AWSGov providers. Valid values: true, false. Default\nvalue: false.\n"
+                },
+                "enableFirenet": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable firenet interfaces or not.\n"
+                },
+                "enableGatewayLoadBalancer": {
+                    "type": "boolean",
+                    "description": "Enable firenet interfaces with AWS Gateway Load Balancer. Only valid when `enable_firenet` or `enable_transit_firenet`\nare set to true and `cloud_type` = 1 (AWS). Currently AWS Gateway Load Balancer is only supported in AWS regions\nus-west-2 and us-east-1. Valid values: true or false. Default value: false.\n"
+                },
+                "enableHybridConnection": {
+                    "type": "boolean",
+                    "description": "Sign of readiness for TGW connection.\n"
+                },
+                "enableJumboFrame": {
+                    "type": "boolean",
+                    "description": "Enable jumbo frame support for transit gateway. Valid values: true or false. Default value: true.\n"
+                },
+                "enableLearnedCidrsApproval": {
+                    "type": "boolean",
+                    "description": "Switch to enable/disable encrypted transit approval for transit Gateway. Valid values: true, false.\n"
+                },
+                "enableMonitorGatewaySubnets": {
+                    "type": "boolean",
+                    "description": "Enable [monitor gateway subnets](https://docs.aviatrix.com/HowTos/gateway.html#monitor-gateway-subnet). Only valid for\ncloud_type = 1 (AWS) or 256 (AWSGov). Valid values: true, false. Default value: false.\n"
+                },
+                "enableMultiTierTransit": {
+                    "type": "boolean",
+                    "description": "Enable Multi-tier Transit mode on transit gateway.\n"
+                },
+                "enablePrivateOob": {
+                    "type": "boolean",
+                    "description": "Enable private OOB.\n"
+                },
+                "enableS2cRxBalancing": {
+                    "type": "boolean",
+                    "description": "Enable S2C receive packet CPU re-balancing on transit gateway.\n"
+                },
+                "enableSegmentation": {
+                    "type": "boolean",
+                    "description": "Enable segmentation to allow association of transit gateway to security domains.\n"
+                },
+                "enableSpotInstance": {
+                    "type": "boolean",
+                    "description": "Enable spot instance. NOT supported for production deployment.\n"
+                },
+                "enableTransitFirenet": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable transit firenet interfaces or not.\n"
+                },
+                "enableTransitSummarizeCidrToTgw": {
+                    "type": "boolean",
+                    "description": "Enable summarize CIDR to TGW.\n"
+                },
+                "enableVpcDnsServer": {
+                    "type": "boolean",
+                    "description": "Enable vpc_dns_server for Gateway. Valid values: true, false.\n"
+                },
+                "excludedAdvertisedSpokeRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be advertised to on-prem as 'Excluded CIDR List'. When configured, it inspects all\nthe advertised CIDRs from its spoke gateways and remove those included in the 'Excluded CIDR List'.\n"
+                },
+                "faultDomain": {
+                    "type": "string",
+                    "description": "Fault domain for OCI.\n"
+                },
+                "filteredSpokeVpcRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be filtered from the spoke VPC route table. When configured, filtering CIDR(s) or\nit’s subnet will be deleted from VPC routing tables as well as from spoke gateway’s routing table. It applies to all\nspoke gateways attached to this transit gateway.\n"
+                },
+                "gwName": {
+                    "type": "string",
+                    "description": "Name of the gateway which is going to be created.\n"
+                },
+                "gwSize": {
+                    "type": "string",
+                    "description": "Size of the gateway instance.\n"
+                },
+                "haAvailabilityDomain": {
+                    "type": "string",
+                    "description": "HA availability domain for OCI.\n"
+                },
+                "haAzureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to the HA Transit Gateway.\n"
+                },
+                "haBgpLanInterfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aviatrix:index/TransitGatewayHaBgpLanInterface:TransitGatewayHaBgpLanInterface"
+                    },
+                    "description": "Interfaces to run BGP protocol on top of the ethernet interface, to connect to the onprem/remote peer. Only available\nfor GCP HA Transit.\n"
+                },
+                "haBgpLanIpLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of available BGP LAN interface IPs for transit external device HA connection creation. Only supports GCP. Available\nas of provider version R2.21.0+.\n"
+                },
+                "haCloudInstanceId": {
+                    "type": "string",
+                    "description": "Cloud instance ID of HA transit gateway.\n"
+                },
+                "haEip": {
+                    "type": "string",
+                    "description": "Public IP address that you want assigned to the HA Transit Gateway.\n"
+                },
+                "haFaultDomain": {
+                    "type": "string",
+                    "description": "HA fault domain for OCI.\n"
+                },
+                "haGwName": {
+                    "type": "string",
+                    "description": "Aviatrix transit gateway unique name of HA transit gateway.\n"
+                },
+                "haGwSize": {
+                    "type": "string",
+                    "description": "HA Gateway Size. Mandatory if HA is enabled (ha_subnet is set).\n"
+                },
+                "haImageVersion": {
+                    "type": "string",
+                    "description": "ha_image_version can be used to set the desired image version of the HA gateway. If set, we will attempt to update the\ngateway to the specified version.\n"
+                },
+                "haInsaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Transit HA Gateway. Required for AWS if insane_mode is enabled and ha_subnet\nis set.\n"
+                },
+                "haLanInterfaceCidr": {
+                    "type": "string",
+                    "description": "Transit gateway lan interface cidr for the HA gateway.\n"
+                },
+                "haOobAvailabilityZone": {
+                    "type": "string",
+                    "description": "OOB HA availability zone.\n"
+                },
+                "haOobManagementSubnet": {
+                    "type": "string",
+                    "description": "OOB HA management subnet.\n"
+                },
+                "haPrivateIp": {
+                    "type": "string",
+                    "description": "Private IP address of HA transit gateway.\n"
+                },
+                "haSecurityGroupId": {
+                    "type": "string",
+                    "description": "HA security group used for the transit gateway.\n"
+                },
+                "haSoftwareVersion": {
+                    "type": "string",
+                    "description": "ha_software_version can be used to set the desired software version of the HA gateway. If set, we will attempt to update\nthe gateway to the specified version. If left blank, the gateway software version will continue to be managed through\nthe aviatrix_controller_config resource.\n"
+                },
+                "haSubnet": {
+                    "type": "string",
+                    "description": "HA Subnet. Required for enabling HA for AWS/AWSGov/AWSChina/Azure/OCI/Alibaba Cloud. Optional for enabling HA for GCP\ngateway.\n"
+                },
+                "haZone": {
+                    "type": "string",
+                    "description": "HA Zone. Required if enabling HA for GCP. Optional for Azure.\n"
+                },
+                "imageVersion": {
+                    "type": "string",
+                    "description": "image_version can be used to set the desired image version of the gateway. If set, we will attempt to update the gateway\nto the specified version.\n"
+                },
+                "insaneMode": {
+                    "type": "boolean",
+                    "description": "Enable Insane Mode for Transit. Valid values: true, false. Supported for AWS/AWSGov, GCP, Azure and OCI. If insane mode\nis enabled, gateway size has to at least be c5 size for AWS and Standard_D3_v2 size for Azure.\n"
+                },
+                "insaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Transit Gateway. Required for AWS if insane_mode is enabled.\n"
+                },
+                "lanInterfaceCidr": {
+                    "type": "string",
+                    "description": "Transit gateway lan interface cidr.\n"
+                },
+                "lanPrivateSubnet": {
+                    "type": "string",
+                    "description": "LAN Private Subnet. Only used for GCP Transit FireNet.\n"
+                },
+                "lanVpcId": {
+                    "type": "string",
+                    "description": "LAN VPC ID. Only used for GCP Transit FireNet.\n"
+                },
+                "learnedCidrsApprovalMode": {
+                    "type": "string",
+                    "description": "Set the learned CIDRs approval mode. Only valid when 'enable_learned_cidrs_approval' is set to true. If set to\n'gateway', learned CIDR approval applies to ALL connections. If set to 'connection', learned CIDR approval is configured\non a per connection basis. When configuring per connection, use the enable_learned_cidrs_approval attribute within the\nconnection resource to toggle learned CIDR approval. Valid values: 'gateway' or 'connection'. Default value: 'gateway'.\n"
+                },
+                "localAsNumber": {
+                    "type": "string",
+                    "description": "Changes the Aviatrix Transit Gateway ASN number before you setup Aviatrix Transit Gateway connection configurations.\n"
+                },
+                "monitorExcludeLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true.\n"
+                },
+                "oobAvailabilityZone": {
+                    "type": "string",
+                    "description": "OOB subnet availability zone.\n"
+                },
+                "oobManagementSubnet": {
+                    "type": "string",
+                    "description": "OOB management subnet.\n"
+                },
+                "prependAsPaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of AS numbers to populate BGP AP_PATH field when it advertises to VGW or peer devices.\n"
+                },
+                "privateIp": {
+                    "type": "string",
+                    "description": "Private IP address of the transit gateway created.\n"
+                },
+                "rxQueueSize": {
+                    "type": "string",
+                    "description": "Gateway ethernet interface RX queue size. Supported for AWS related clouds only.\n"
+                },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "Security group used for the transit gateway.\n"
+                },
+                "singleAzHa": {
+                    "type": "boolean",
+                    "description": "Set to 'enabled' if this feature is desired.\n"
+                },
+                "singleIpSnat": {
+                    "type": "boolean",
+                    "description": "Enable or disable Source NAT feature in 'single_ip' mode for this container.\n"
+                },
+                "softwareVersion": {
+                    "type": "string",
+                    "description": "software_version can be used to set the desired software version of the gateway. If set, we will attempt to update the\ngateway to the specified version. If left blank, the gateway software version will continue to be managed through the\naviatrix_controller_config resource.\n"
+                },
+                "spotPrice": {
+                    "type": "string",
+                    "description": "Price for spot instance. NOT supported for production deployment.\n"
+                },
+                "subnet": {
+                    "type": "string",
+                    "description": "Public Subnet Name.\n"
+                },
+                "tagLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Instance tag of cloud provider.\n",
+                    "deprecationMessage": "Use tags instead."
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of tags to assign to the transit gateway.\n"
+                },
+                "tunnelDetectionTime": {
+                    "type": "integer",
+                    "description": "The IPSec tunnel down detection time for the transit gateway.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "VPC-ID/VNet-Name of cloud provider.\n"
+                },
+                "vpcReg": {
+                    "type": "string",
+                    "description": "Region of cloud provider.\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "Availability Zone. Only available for cloud_type = 8 (Azure). Must be in the form 'az-n', for example, 'az-2'.\n"
+                }
+            },
+            "required": [
+                "accountName",
+                "availabilityDomain",
+                "azureEipNameResourceGroup",
+                "bgpLanIpLists",
+                "cloudInstanceId",
+                "cloudType",
+                "eip",
+                "faultDomain",
+                "gwName",
+                "gwSize",
+                "haAvailabilityDomain",
+                "haAzureEipNameResourceGroup",
+                "haBgpLanIpLists",
+                "haCloudInstanceId",
+                "haEip",
+                "haFaultDomain",
+                "haGwName",
+                "haImageVersion",
+                "haLanInterfaceCidr",
+                "haPrivateIp",
+                "haSecurityGroupId",
+                "haSoftwareVersion",
+                "imageVersion",
+                "lanInterfaceCidr",
+                "localAsNumber",
+                "privateIp",
+                "securityGroupId",
+                "softwareVersion",
+                "subnet",
+                "tunnelDetectionTime",
+                "vpcId",
+                "vpcReg"
+            ],
+            "inputProperties": {
+                "accountName": {
+                    "type": "string",
+                    "description": "This parameter represents the name of a Cloud-Account in Aviatrix controller.\n"
+                },
+                "allocateNewEip": {
+                    "type": "boolean",
+                    "description": "If false, reuse an idle address in Elastic IP pool for this gateway. Otherwise, allocate a new Elastic IP and use it for\nthis gateway.\n"
+                },
+                "approvedLearnedCidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Approved learned CIDRs. Available as of provider version R2.21+.\n"
+                },
+                "availabilityDomain": {
+                    "type": "string",
+                    "description": "Availability domain for OCI.\n"
+                },
+                "azureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to this Transit Gateway.\n"
+                },
+                "bgpEcmp": {
+                    "type": "boolean",
+                    "description": "Enable Equal Cost Multi Path (ECMP) routing for the next hop.\n"
+                },
+                "bgpHoldTime": {
+                    "type": "integer",
+                    "description": "BGP Hold Time.\n"
+                },
+                "bgpLanInterfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aviatrix:index/TransitGatewayBgpLanInterface:TransitGatewayBgpLanInterface"
+                    },
+                    "description": "Interfaces to run BGP protocol on top of the ethernet interface, to connect to the onprem/remote peer. Only available\nfor GCP Transit.\n"
+                },
+                "bgpManualSpokeAdvertiseCidrs": {
+                    "type": "string",
+                    "description": "Intended CIDR list to be advertised to external bgp router.\n"
+                },
+                "bgpPollingTime": {
+                    "type": "string",
+                    "description": "BGP route polling time. Unit is in seconds. Valid values are between 10 and 50.\n"
+                },
+                "cloudType": {
+                    "type": "integer",
+                    "description": "Type of cloud service provider, requires an integer value. Use 1 for AWS.\n"
+                },
+                "connectedTransit": {
+                    "type": "boolean",
+                    "description": "Specify Connected Transit status.\n"
+                },
+                "customerManagedKeys": {
+                    "type": "string",
+                    "description": "Customer managed key ID.\n"
+                },
+                "customizedSpokeVpcRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be customized for the spoke VPC routes. When configured, it will replace all learned\nroutes in VPC routing tables, including RFC1918 and non-RFC1918 CIDRs. It applies to all spoke gateways attached to this\ntransit gateway.\n"
+                },
+                "customizedTransitVpcRoutes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of CIDRs to be customized for the transit VPC routes. When configured, it will replace all learned routes in VPC\nrouting tables, including RFC1918 and non-RFC1918 CIDRs.To be effective, `enable_advertise_transit_cidr` or firewall\nmanagement access for a transit firenet gateway must be enabled.\n"
+                },
+                "eip": {
+                    "type": "string",
+                    "description": "Required when allocate_new_eip is false. It uses specified EIP for this gateway.\n"
+                },
+                "enableActiveStandby": {
+                    "type": "boolean",
+                    "description": "Enables Active-Standby Mode, available only with HA enabled.\n"
+                },
+                "enableActiveStandbyPreemptive": {
+                    "type": "boolean",
+                    "description": "Enables Preemptive Mode for Active-Standby, available only with Active-Standby enabled.\n"
+                },
+                "enableAdvertiseTransitCidr": {
+                    "type": "boolean",
+                    "description": "Switch to Enable/Disable advertise transit VPC network CIDR.\n"
+                },
+                "enableBgpOverLan": {
+                    "type": "boolean",
+                    "description": "Pre-allocate a network interface(eth4) for \"BGP over LAN\" functionality. Only valid for cloud_type = 4 (GCP) and 8\n(Azure). Valid values: true or false. Default value: false. Available as of provider version R2.18+\n"
+                },
+                "enableEgressTransitFirenet": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable egress transit firenet interfaces or not.\n"
+                },
+                "enableEncryptVolume": {
+                    "type": "boolean",
+                    "description": "Enable encrypt gateway EBS volume. Only supported for AWS and AWSGov providers. Valid values: true, false. Default\nvalue: false.\n"
+                },
+                "enableFirenet": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable firenet interfaces or not.\n"
+                },
+                "enableGatewayLoadBalancer": {
+                    "type": "boolean",
+                    "description": "Enable firenet interfaces with AWS Gateway Load Balancer. Only valid when `enable_firenet` or `enable_transit_firenet`\nare set to true and `cloud_type` = 1 (AWS). Currently AWS Gateway Load Balancer is only supported in AWS regions\nus-west-2 and us-east-1. Valid values: true or false. Default value: false.\n"
+                },
+                "enableHybridConnection": {
+                    "type": "boolean",
+                    "description": "Sign of readiness for TGW connection.\n"
+                },
+                "enableJumboFrame": {
+                    "type": "boolean",
+                    "description": "Enable jumbo frame support for transit gateway. Valid values: true or false. Default value: true.\n"
+                },
+                "enableLearnedCidrsApproval": {
+                    "type": "boolean",
+                    "description": "Switch to enable/disable encrypted transit approval for transit Gateway. Valid values: true, false.\n"
+                },
+                "enableMonitorGatewaySubnets": {
+                    "type": "boolean",
+                    "description": "Enable [monitor gateway subnets](https://docs.aviatrix.com/HowTos/gateway.html#monitor-gateway-subnet). Only valid for\ncloud_type = 1 (AWS) or 256 (AWSGov). Valid values: true, false. Default value: false.\n"
+                },
+                "enableMultiTierTransit": {
+                    "type": "boolean",
+                    "description": "Enable Multi-tier Transit mode on transit gateway.\n"
+                },
+                "enablePrivateOob": {
+                    "type": "boolean",
+                    "description": "Enable private OOB.\n"
+                },
+                "enableS2cRxBalancing": {
+                    "type": "boolean",
+                    "description": "Enable S2C receive packet CPU re-balancing on transit gateway.\n"
+                },
+                "enableSegmentation": {
+                    "type": "boolean",
+                    "description": "Enable segmentation to allow association of transit gateway to security domains.\n"
+                },
+                "enableSpotInstance": {
+                    "type": "boolean",
+                    "description": "Enable spot instance. NOT supported for production deployment.\n"
+                },
+                "enableTransitFirenet": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable transit firenet interfaces or not.\n"
+                },
+                "enableTransitSummarizeCidrToTgw": {
+                    "type": "boolean",
+                    "description": "Enable summarize CIDR to TGW.\n"
+                },
+                "enableVpcDnsServer": {
+                    "type": "boolean",
+                    "description": "Enable vpc_dns_server for Gateway. Valid values: true, false.\n"
+                },
+                "excludedAdvertisedSpokeRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be advertised to on-prem as 'Excluded CIDR List'. When configured, it inspects all\nthe advertised CIDRs from its spoke gateways and remove those included in the 'Excluded CIDR List'.\n"
+                },
+                "faultDomain": {
+                    "type": "string",
+                    "description": "Fault domain for OCI.\n"
+                },
+                "filteredSpokeVpcRoutes": {
+                    "type": "string",
+                    "description": "A list of comma separated CIDRs to be filtered from the spoke VPC route table. When configured, filtering CIDR(s) or\nit’s subnet will be deleted from VPC routing tables as well as from spoke gateway’s routing table. It applies to all\nspoke gateways attached to this transit gateway.\n"
+                },
+                "gwName": {
+                    "type": "string",
+                    "description": "Name of the gateway which is going to be created.\n"
+                },
+                "gwSize": {
+                    "type": "string",
+                    "description": "Size of the gateway instance.\n"
+                },
+                "haAvailabilityDomain": {
+                    "type": "string",
+                    "description": "HA availability domain for OCI.\n"
+                },
+                "haAzureEipNameResourceGroup": {
+                    "type": "string",
+                    "description": "The name of the public IP address and its resource group in Azure to assign to the HA Transit Gateway.\n"
+                },
+                "haBgpLanInterfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aviatrix:index/TransitGatewayHaBgpLanInterface:TransitGatewayHaBgpLanInterface"
+                    },
+                    "description": "Interfaces to run BGP protocol on top of the ethernet interface, to connect to the onprem/remote peer. Only available\nfor GCP HA Transit.\n"
+                },
+                "haEip": {
+                    "type": "string",
+                    "description": "Public IP address that you want assigned to the HA Transit Gateway.\n"
+                },
+                "haFaultDomain": {
+                    "type": "string",
+                    "description": "HA fault domain for OCI.\n"
+                },
+                "haGwSize": {
+                    "type": "string",
+                    "description": "HA Gateway Size. Mandatory if HA is enabled (ha_subnet is set).\n"
+                },
+                "haImageVersion": {
+                    "type": "string",
+                    "description": "ha_image_version can be used to set the desired image version of the HA gateway. If set, we will attempt to update the\ngateway to the specified version.\n"
+                },
+                "haInsaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Transit HA Gateway. Required for AWS if insane_mode is enabled and ha_subnet\nis set.\n"
+                },
+                "haOobAvailabilityZone": {
+                    "type": "string",
+                    "description": "OOB HA availability zone.\n"
+                },
+                "haOobManagementSubnet": {
+                    "type": "string",
+                    "description": "OOB HA management subnet.\n"
+                },
+                "haSoftwareVersion": {
+                    "type": "string",
+                    "description": "ha_software_version can be used to set the desired software version of the HA gateway. If set, we will attempt to update\nthe gateway to the specified version. If left blank, the gateway software version will continue to be managed through\nthe aviatrix_controller_config resource.\n"
+                },
+                "haSubnet": {
+                    "type": "string",
+                    "description": "HA Subnet. Required for enabling HA for AWS/AWSGov/AWSChina/Azure/OCI/Alibaba Cloud. Optional for enabling HA for GCP\ngateway.\n"
+                },
+                "haZone": {
+                    "type": "string",
+                    "description": "HA Zone. Required if enabling HA for GCP. Optional for Azure.\n"
+                },
+                "imageVersion": {
+                    "type": "string",
+                    "description": "image_version can be used to set the desired image version of the gateway. If set, we will attempt to update the gateway\nto the specified version.\n"
+                },
+                "insaneMode": {
+                    "type": "boolean",
+                    "description": "Enable Insane Mode for Transit. Valid values: true, false. Supported for AWS/AWSGov, GCP, Azure and OCI. If insane mode\nis enabled, gateway size has to at least be c5 size for AWS and Standard_D3_v2 size for Azure.\n"
+                },
+                "insaneModeAz": {
+                    "type": "string",
+                    "description": "AZ of subnet being created for Insane Mode Transit Gateway. Required for AWS if insane_mode is enabled.\n"
+                },
+                "lanPrivateSubnet": {
+                    "type": "string",
+                    "description": "LAN Private Subnet. Only used for GCP Transit FireNet.\n"
+                },
+                "lanVpcId": {
+                    "type": "string",
+                    "description": "LAN VPC ID. Only used for GCP Transit FireNet.\n"
+                },
+                "learnedCidrsApprovalMode": {
+                    "type": "string",
+                    "description": "Set the learned CIDRs approval mode. Only valid when 'enable_learned_cidrs_approval' is set to true. If set to\n'gateway', learned CIDR approval applies to ALL connections. If set to 'connection', learned CIDR approval is configured\non a per connection basis. When configuring per connection, use the enable_learned_cidrs_approval attribute within the\nconnection resource to toggle learned CIDR approval. Valid values: 'gateway' or 'connection'. Default value: 'gateway'.\n"
+                },
+                "localAsNumber": {
+                    "type": "string",
+                    "description": "Changes the Aviatrix Transit Gateway ASN number before you setup Aviatrix Transit Gateway connection configurations.\n"
+                },
+                "monitorExcludeLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true.\n"
+                },
+                "oobAvailabilityZone": {
+                    "type": "string",
+                    "description": "OOB subnet availability zone.\n"
+                },
+                "oobManagementSubnet": {
+                    "type": "string",
+                    "description": "OOB management subnet.\n"
+                },
+                "prependAsPaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of AS numbers to populate BGP AP_PATH field when it advertises to VGW or peer devices.\n"
+                },
+                "rxQueueSize": {
+                    "type": "string",
+                    "description": "Gateway ethernet interface RX queue size. Supported for AWS related clouds only.\n"
+                },
+                "singleAzHa": {
+                    "type": "boolean",
+                    "description": "Set to 'enabled' if this feature is desired.\n"
+                },
+                "singleIpSnat": {
+                    "type": "boolean",
+                    "description": "Enable or disable Source NAT feature in 'single_ip' mode for this container.\n"
+                },
+                "softwareVersion": {
+                    "type": "string",
+                    "description": "software_version can be used to set the desired software version of the gateway. If set, we will attempt to update the\ngateway to the specified version. If left blank, the gateway software version will continue to be managed through the\naviatrix_controller_config resource.\n"
+                },
+                "spotPrice": {
+                    "type": "string",
+                    "description": "Price for spot instance. NOT supported for production deployment.\n"
+                },
+                "subnet": {
+                    "type": "string",
+                    "description": "Public Subnet Name.\n"
+                },
+                "tagLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Instance tag of cloud provider.\n",
+                    "deprecationMessage": "Use tags instead."
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of tags to assign to the transit gateway.\n"
+                },
+                "tunnelDetectionTime": {
+                    "type": "integer",
+                    "description": "The IPSec tunnel down detection time for the transit gateway.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "VPC-ID/VNet-Name of cloud provider.\n"
+                },
+                "vpcReg": {
+                    "type": "string",
+                    "description": "Region of cloud provider.\n"
+                },
+                "zone": {
+                    "type": "string",
+                    "description": "Availability Zone. Only available for cloud_type = 8 (Azure). Must be in the form 'az-n', for example, 'az-2'.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountName",
+                "cloudType",
+                "gwName",
+                "gwSize",
+                "subnet",
+                "vpcId",
+                "vpcReg"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TransitGateway resources.\n",
+                "properties": {
+                    "accountName": {
+                        "type": "string",
+                        "description": "This parameter represents the name of a Cloud-Account in Aviatrix controller.\n"
+                    },
+                    "allocateNewEip": {
+                        "type": "boolean",
+                        "description": "If false, reuse an idle address in Elastic IP pool for this gateway. Otherwise, allocate a new Elastic IP and use it for\nthis gateway.\n"
+                    },
+                    "approvedLearnedCidrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Approved learned CIDRs. Available as of provider version R2.21+.\n"
+                    },
+                    "availabilityDomain": {
+                        "type": "string",
+                        "description": "Availability domain for OCI.\n"
+                    },
+                    "azureEipNameResourceGroup": {
+                        "type": "string",
+                        "description": "The name of the public IP address and its resource group in Azure to assign to this Transit Gateway.\n"
+                    },
+                    "bgpEcmp": {
+                        "type": "boolean",
+                        "description": "Enable Equal Cost Multi Path (ECMP) routing for the next hop.\n"
+                    },
+                    "bgpHoldTime": {
+                        "type": "integer",
+                        "description": "BGP Hold Time.\n"
+                    },
+                    "bgpLanInterfaces": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aviatrix:index/TransitGatewayBgpLanInterface:TransitGatewayBgpLanInterface"
+                        },
+                        "description": "Interfaces to run BGP protocol on top of the ethernet interface, to connect to the onprem/remote peer. Only available\nfor GCP Transit.\n"
+                    },
+                    "bgpLanIpLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of available BGP LAN interface IPs for transit external device connection creation. Only supports GCP. Available as\nof provider version R2.21.0+.\n"
+                    },
+                    "bgpManualSpokeAdvertiseCidrs": {
+                        "type": "string",
+                        "description": "Intended CIDR list to be advertised to external bgp router.\n"
+                    },
+                    "bgpPollingTime": {
+                        "type": "string",
+                        "description": "BGP route polling time. Unit is in seconds. Valid values are between 10 and 50.\n"
+                    },
+                    "cloudInstanceId": {
+                        "type": "string",
+                        "description": "Instance ID of the transit gateway.\n"
+                    },
+                    "cloudType": {
+                        "type": "integer",
+                        "description": "Type of cloud service provider, requires an integer value. Use 1 for AWS.\n"
+                    },
+                    "connectedTransit": {
+                        "type": "boolean",
+                        "description": "Specify Connected Transit status.\n"
+                    },
+                    "customerManagedKeys": {
+                        "type": "string",
+                        "description": "Customer managed key ID.\n"
+                    },
+                    "customizedSpokeVpcRoutes": {
+                        "type": "string",
+                        "description": "A list of comma separated CIDRs to be customized for the spoke VPC routes. When configured, it will replace all learned\nroutes in VPC routing tables, including RFC1918 and non-RFC1918 CIDRs. It applies to all spoke gateways attached to this\ntransit gateway.\n"
+                    },
+                    "customizedTransitVpcRoutes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of CIDRs to be customized for the transit VPC routes. When configured, it will replace all learned routes in VPC\nrouting tables, including RFC1918 and non-RFC1918 CIDRs.To be effective, `enable_advertise_transit_cidr` or firewall\nmanagement access for a transit firenet gateway must be enabled.\n"
+                    },
+                    "eip": {
+                        "type": "string",
+                        "description": "Required when allocate_new_eip is false. It uses specified EIP for this gateway.\n"
+                    },
+                    "enableActiveStandby": {
+                        "type": "boolean",
+                        "description": "Enables Active-Standby Mode, available only with HA enabled.\n"
+                    },
+                    "enableActiveStandbyPreemptive": {
+                        "type": "boolean",
+                        "description": "Enables Preemptive Mode for Active-Standby, available only with Active-Standby enabled.\n"
+                    },
+                    "enableAdvertiseTransitCidr": {
+                        "type": "boolean",
+                        "description": "Switch to Enable/Disable advertise transit VPC network CIDR.\n"
+                    },
+                    "enableBgpOverLan": {
+                        "type": "boolean",
+                        "description": "Pre-allocate a network interface(eth4) for \"BGP over LAN\" functionality. Only valid for cloud_type = 4 (GCP) and 8\n(Azure). Valid values: true or false. Default value: false. Available as of provider version R2.18+\n"
+                    },
+                    "enableEgressTransitFirenet": {
+                        "type": "boolean",
+                        "description": "Specify whether to enable egress transit firenet interfaces or not.\n"
+                    },
+                    "enableEncryptVolume": {
+                        "type": "boolean",
+                        "description": "Enable encrypt gateway EBS volume. Only supported for AWS and AWSGov providers. Valid values: true, false. Default\nvalue: false.\n"
+                    },
+                    "enableFirenet": {
+                        "type": "boolean",
+                        "description": "Specify whether to enable firenet interfaces or not.\n"
+                    },
+                    "enableGatewayLoadBalancer": {
+                        "type": "boolean",
+                        "description": "Enable firenet interfaces with AWS Gateway Load Balancer. Only valid when `enable_firenet` or `enable_transit_firenet`\nare set to true and `cloud_type` = 1 (AWS). Currently AWS Gateway Load Balancer is only supported in AWS regions\nus-west-2 and us-east-1. Valid values: true or false. Default value: false.\n"
+                    },
+                    "enableHybridConnection": {
+                        "type": "boolean",
+                        "description": "Sign of readiness for TGW connection.\n"
+                    },
+                    "enableJumboFrame": {
+                        "type": "boolean",
+                        "description": "Enable jumbo frame support for transit gateway. Valid values: true or false. Default value: true.\n"
+                    },
+                    "enableLearnedCidrsApproval": {
+                        "type": "boolean",
+                        "description": "Switch to enable/disable encrypted transit approval for transit Gateway. Valid values: true, false.\n"
+                    },
+                    "enableMonitorGatewaySubnets": {
+                        "type": "boolean",
+                        "description": "Enable [monitor gateway subnets](https://docs.aviatrix.com/HowTos/gateway.html#monitor-gateway-subnet). Only valid for\ncloud_type = 1 (AWS) or 256 (AWSGov). Valid values: true, false. Default value: false.\n"
+                    },
+                    "enableMultiTierTransit": {
+                        "type": "boolean",
+                        "description": "Enable Multi-tier Transit mode on transit gateway.\n"
+                    },
+                    "enablePrivateOob": {
+                        "type": "boolean",
+                        "description": "Enable private OOB.\n"
+                    },
+                    "enableS2cRxBalancing": {
+                        "type": "boolean",
+                        "description": "Enable S2C receive packet CPU re-balancing on transit gateway.\n"
+                    },
+                    "enableSegmentation": {
+                        "type": "boolean",
+                        "description": "Enable segmentation to allow association of transit gateway to security domains.\n"
+                    },
+                    "enableSpotInstance": {
+                        "type": "boolean",
+                        "description": "Enable spot instance. NOT supported for production deployment.\n"
+                    },
+                    "enableTransitFirenet": {
+                        "type": "boolean",
+                        "description": "Specify whether to enable transit firenet interfaces or not.\n"
+                    },
+                    "enableTransitSummarizeCidrToTgw": {
+                        "type": "boolean",
+                        "description": "Enable summarize CIDR to TGW.\n"
+                    },
+                    "enableVpcDnsServer": {
+                        "type": "boolean",
+                        "description": "Enable vpc_dns_server for Gateway. Valid values: true, false.\n"
+                    },
+                    "excludedAdvertisedSpokeRoutes": {
+                        "type": "string",
+                        "description": "A list of comma separated CIDRs to be advertised to on-prem as 'Excluded CIDR List'. When configured, it inspects all\nthe advertised CIDRs from its spoke gateways and remove those included in the 'Excluded CIDR List'.\n"
+                    },
+                    "faultDomain": {
+                        "type": "string",
+                        "description": "Fault domain for OCI.\n"
+                    },
+                    "filteredSpokeVpcRoutes": {
+                        "type": "string",
+                        "description": "A list of comma separated CIDRs to be filtered from the spoke VPC route table. When configured, filtering CIDR(s) or\nit’s subnet will be deleted from VPC routing tables as well as from spoke gateway’s routing table. It applies to all\nspoke gateways attached to this transit gateway.\n"
+                    },
+                    "gwName": {
+                        "type": "string",
+                        "description": "Name of the gateway which is going to be created.\n"
+                    },
+                    "gwSize": {
+                        "type": "string",
+                        "description": "Size of the gateway instance.\n"
+                    },
+                    "haAvailabilityDomain": {
+                        "type": "string",
+                        "description": "HA availability domain for OCI.\n"
+                    },
+                    "haAzureEipNameResourceGroup": {
+                        "type": "string",
+                        "description": "The name of the public IP address and its resource group in Azure to assign to the HA Transit Gateway.\n"
+                    },
+                    "haBgpLanInterfaces": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aviatrix:index/TransitGatewayHaBgpLanInterface:TransitGatewayHaBgpLanInterface"
+                        },
+                        "description": "Interfaces to run BGP protocol on top of the ethernet interface, to connect to the onprem/remote peer. Only available\nfor GCP HA Transit.\n"
+                    },
+                    "haBgpLanIpLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of available BGP LAN interface IPs for transit external device HA connection creation. Only supports GCP. Available\nas of provider version R2.21.0+.\n"
+                    },
+                    "haCloudInstanceId": {
+                        "type": "string",
+                        "description": "Cloud instance ID of HA transit gateway.\n"
+                    },
+                    "haEip": {
+                        "type": "string",
+                        "description": "Public IP address that you want assigned to the HA Transit Gateway.\n"
+                    },
+                    "haFaultDomain": {
+                        "type": "string",
+                        "description": "HA fault domain for OCI.\n"
+                    },
+                    "haGwName": {
+                        "type": "string",
+                        "description": "Aviatrix transit gateway unique name of HA transit gateway.\n"
+                    },
+                    "haGwSize": {
+                        "type": "string",
+                        "description": "HA Gateway Size. Mandatory if HA is enabled (ha_subnet is set).\n"
+                    },
+                    "haImageVersion": {
+                        "type": "string",
+                        "description": "ha_image_version can be used to set the desired image version of the HA gateway. If set, we will attempt to update the\ngateway to the specified version.\n"
+                    },
+                    "haInsaneModeAz": {
+                        "type": "string",
+                        "description": "AZ of subnet being created for Insane Mode Transit HA Gateway. Required for AWS if insane_mode is enabled and ha_subnet\nis set.\n"
+                    },
+                    "haLanInterfaceCidr": {
+                        "type": "string",
+                        "description": "Transit gateway lan interface cidr for the HA gateway.\n"
+                    },
+                    "haOobAvailabilityZone": {
+                        "type": "string",
+                        "description": "OOB HA availability zone.\n"
+                    },
+                    "haOobManagementSubnet": {
+                        "type": "string",
+                        "description": "OOB HA management subnet.\n"
+                    },
+                    "haPrivateIp": {
+                        "type": "string",
+                        "description": "Private IP address of HA transit gateway.\n"
+                    },
+                    "haSecurityGroupId": {
+                        "type": "string",
+                        "description": "HA security group used for the transit gateway.\n"
+                    },
+                    "haSoftwareVersion": {
+                        "type": "string",
+                        "description": "ha_software_version can be used to set the desired software version of the HA gateway. If set, we will attempt to update\nthe gateway to the specified version. If left blank, the gateway software version will continue to be managed through\nthe aviatrix_controller_config resource.\n"
+                    },
+                    "haSubnet": {
+                        "type": "string",
+                        "description": "HA Subnet. Required for enabling HA for AWS/AWSGov/AWSChina/Azure/OCI/Alibaba Cloud. Optional for enabling HA for GCP\ngateway.\n"
+                    },
+                    "haZone": {
+                        "type": "string",
+                        "description": "HA Zone. Required if enabling HA for GCP. Optional for Azure.\n"
+                    },
+                    "imageVersion": {
+                        "type": "string",
+                        "description": "image_version can be used to set the desired image version of the gateway. If set, we will attempt to update the gateway\nto the specified version.\n"
+                    },
+                    "insaneMode": {
+                        "type": "boolean",
+                        "description": "Enable Insane Mode for Transit. Valid values: true, false. Supported for AWS/AWSGov, GCP, Azure and OCI. If insane mode\nis enabled, gateway size has to at least be c5 size for AWS and Standard_D3_v2 size for Azure.\n"
+                    },
+                    "insaneModeAz": {
+                        "type": "string",
+                        "description": "AZ of subnet being created for Insane Mode Transit Gateway. Required for AWS if insane_mode is enabled.\n"
+                    },
+                    "lanInterfaceCidr": {
+                        "type": "string",
+                        "description": "Transit gateway lan interface cidr.\n"
+                    },
+                    "lanPrivateSubnet": {
+                        "type": "string",
+                        "description": "LAN Private Subnet. Only used for GCP Transit FireNet.\n"
+                    },
+                    "lanVpcId": {
+                        "type": "string",
+                        "description": "LAN VPC ID. Only used for GCP Transit FireNet.\n"
+                    },
+                    "learnedCidrsApprovalMode": {
+                        "type": "string",
+                        "description": "Set the learned CIDRs approval mode. Only valid when 'enable_learned_cidrs_approval' is set to true. If set to\n'gateway', learned CIDR approval applies to ALL connections. If set to 'connection', learned CIDR approval is configured\non a per connection basis. When configuring per connection, use the enable_learned_cidrs_approval attribute within the\nconnection resource to toggle learned CIDR approval. Valid values: 'gateway' or 'connection'. Default value: 'gateway'.\n"
+                    },
+                    "localAsNumber": {
+                        "type": "string",
+                        "description": "Changes the Aviatrix Transit Gateway ASN number before you setup Aviatrix Transit Gateway connection configurations.\n"
+                    },
+                    "monitorExcludeLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A set of monitored instance ids. Only valid when 'enable_monitor_gateway_subnets' = true.\n"
+                    },
+                    "oobAvailabilityZone": {
+                        "type": "string",
+                        "description": "OOB subnet availability zone.\n"
+                    },
+                    "oobManagementSubnet": {
+                        "type": "string",
+                        "description": "OOB management subnet.\n"
+                    },
+                    "prependAsPaths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of AS numbers to populate BGP AP_PATH field when it advertises to VGW or peer devices.\n"
+                    },
+                    "privateIp": {
+                        "type": "string",
+                        "description": "Private IP address of the transit gateway created.\n"
+                    },
+                    "rxQueueSize": {
+                        "type": "string",
+                        "description": "Gateway ethernet interface RX queue size. Supported for AWS related clouds only.\n"
+                    },
+                    "securityGroupId": {
+                        "type": "string",
+                        "description": "Security group used for the transit gateway.\n"
+                    },
+                    "singleAzHa": {
+                        "type": "boolean",
+                        "description": "Set to 'enabled' if this feature is desired.\n"
+                    },
+                    "singleIpSnat": {
+                        "type": "boolean",
+                        "description": "Enable or disable Source NAT feature in 'single_ip' mode for this container.\n"
+                    },
+                    "softwareVersion": {
+                        "type": "string",
+                        "description": "software_version can be used to set the desired software version of the gateway. If set, we will attempt to update the\ngateway to the specified version. If left blank, the gateway software version will continue to be managed through the\naviatrix_controller_config resource.\n"
+                    },
+                    "spotPrice": {
+                        "type": "string",
+                        "description": "Price for spot instance. NOT supported for production deployment.\n"
+                    },
+                    "subnet": {
+                        "type": "string",
+                        "description": "Public Subnet Name.\n"
+                    },
+                    "tagLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Instance tag of cloud provider.\n",
+                        "deprecationMessage": "Use tags instead."
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of tags to assign to the transit gateway.\n"
+                    },
+                    "tunnelDetectionTime": {
+                        "type": "integer",
+                        "description": "The IPSec tunnel down detection time for the transit gateway.\n"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "VPC-ID/VNet-Name of cloud provider.\n"
+                    },
+                    "vpcReg": {
+                        "type": "string",
+                        "description": "Region of cloud provider.\n"
+                    },
+                    "zone": {
+                        "type": "string",
+                        "description": "Availability Zone. Only available for cloud_type = 8 (Azure). Must be in the form 'az-n', for example, 'az-2'.\n"
                     }
                 },
                 "type": "object"

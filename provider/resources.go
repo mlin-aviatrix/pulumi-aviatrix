@@ -80,7 +80,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/mlin-aviatrix/pulumi-aviatrix",
 		// The GitHub Org for the provider - defaults to `terraform-providers`
 		GitHubOrg: "",
-		Config:    map[string]*tfbridge.SchemaInfo{
+		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -96,7 +96,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
 			// needed only if you wish to override types or other default options.
@@ -109,9 +109,12 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
-			"aviatrix_account": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Account")},
-			"aviatrix_vpc": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Vpc")},
-			"aviatrix_gateway": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Gateway")},
+			"aviatrix_account":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Account")},
+			"aviatrix_vpc":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Vpc")},
+			"aviatrix_gateway":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Gateway")},
+			"aviatrix_transit_gateway": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TransitGateway")},
+			"aviatrix_spoke_gateway":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SpokeGateway")},
+			"aviatrix_gateway_snat":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GatewaySNAT")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
